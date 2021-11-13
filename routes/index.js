@@ -1,14 +1,19 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
+
 });
 
-router.post('/login', function(req,res,next) {
-  console.log('Recieved information');
-  console.log('In post');
-});
+router.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }),
+  function(req, res) {
+    res.redirect('/');
+  });
 
 module.exports = router;
