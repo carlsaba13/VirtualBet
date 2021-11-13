@@ -14,9 +14,12 @@ router.get('/bets', function(req, res, next) {
   res.render('bets', { title: 'Express' });
 });
 
-router.post('/login', function(req,res,next) {
-  console.log('Recieved information');
-  console.log('In post');
+router.get('/setOdds', function(req, res, next) {
+  res.render('setOdds', { title: 'Express' });
+});
+
+router.get('/statistics', function(req, res, next) {
+  res.render('statistics', { title: 'Express' });
 });
 
 module.exports = router;
