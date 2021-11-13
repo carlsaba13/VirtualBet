@@ -5,6 +5,7 @@ var passport = require('passport');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
+});
 
 router.get('/profile', function(req, res, next) {
   res.render('profile', { title: 'Express' });
@@ -28,6 +29,6 @@ router.get('/auth/google',
 router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/');
-  });
+});
 
 module.exports = router;
