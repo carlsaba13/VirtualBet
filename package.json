@@ -15,14 +15,10 @@
     "googleapis": "^91.0.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-<<<<<<< HEAD
-    "pug": "2.0.0-beta11",
-    "sportsdataverse": "^1.1.4"
-=======
+    "sportsdataverse": "^1.1.4",
     "passport": "^0.5.0",
     "passport-google-oauth": "^2.0.0",
     "pug": "2.0.0-beta11"
->>>>>>> 10c4df8758e7684209671b95861a41c780ef96cf
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
