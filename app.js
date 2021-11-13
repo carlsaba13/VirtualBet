@@ -47,9 +47,9 @@ app.use(function(err, req, res, next) {
 });
 // Jack will need to insert consumerKey & consumerSecret
 
-/*passport.use(new GoogleStrategy({
-  consumerKey: GOOGLE_CONSUMER_KEY,
-  consumerSecret: GOOGLE_CONSUMER_SECRET,
+passport.use(new GoogleStrategy({
+  consumerKey: "274914504437-l286j72u3vr9sfqqeskpg8v0luoddkve.apps.googleusercontent.com",
+  consumerSecret: "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",
   callbackURL: "http://www.example.com/auth/google/callback"
 },
 function(token, tokenSecret, profile, done) {
