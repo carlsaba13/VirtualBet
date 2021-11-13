@@ -3,17 +3,23 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var gamesRouter = require('./routes/games');
 
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
+
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -39,5 +45,17 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+// Jack will need to insert consumerKey & consumerSecret
 
+passport.use(new GoogleStrategy({
+  consumerKey: GOOGLE_CONSUMER_KEY,
+  consumerSecret: GOOGLE_CONSUMER_SECRET,
+  callbackURL: "http://www.example.com/auth/google/callback"
+},
+function(token, tokenSecret, profile, done) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+}
+));
 module.exports = app;
