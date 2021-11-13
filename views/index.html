@@ -3,6 +3,27 @@
   <link type="text/css" href="stylesheets/style.css" rel="stylesheet">
   <script src=javascripts/main.js></script>
 <body>
-  <p>Test</p>
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modalContent">
+      <span id = "result" class="result"></span>
+      <form class = "deal" action="/login" method="post">
+        <div>
+            <label>Username:</label>
+            <input type="text" name="username"/>
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password"/>
+        </div>
+        <div>
+            <input type="submit" value="Log In"/>
+        </div>
+    </form>
+      <p></p>
+  </div>
+  <div id ="games">
+    <p>Games should be listed under here</p>
+  </div>
 </body>
 </html>
