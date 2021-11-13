@@ -47,7 +47,7 @@ app.use(function(err, req, res, next) {
 });
 // Jack will need to insert consumerKey & consumerSecret
 
-passport.use(new GoogleStrategy({
+/*passport.use(new GoogleStrategy({
   consumerKey: GOOGLE_CONSUMER_KEY,
   consumerSecret: GOOGLE_CONSUMER_SECRET,
   callbackURL: "http://www.example.com/auth/google/callback"
@@ -57,5 +57,5 @@ function(token, tokenSecret, profile, done) {
       return done(err, user);
     });
 }
-));
+));*/
 module.exports = app;
