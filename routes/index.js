@@ -28,6 +28,6 @@ router.get('/auth/google',
 router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/');
-  });
+});
 
 module.exports = router;
