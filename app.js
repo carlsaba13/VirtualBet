@@ -57,5 +57,5 @@ function(token, tokenSecret, profile, done) {
       return done(err, user);
     });
 }
-));*/
+));
 module.exports = app;
