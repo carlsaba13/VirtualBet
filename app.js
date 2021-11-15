@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -12,7 +14,21 @@ var gamesRouter = require('./routes/games');
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 
+dotenv.config({ path: '.env' });
+
 var app = express();
+
+/**
+ * Connect to MongoDB.
+ */
+ mongoose.Promise = global.Promise;
+
+ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+ mongoose.connection.on('error', (err) => {
+   console.error(err);
+   console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
+   process.exit();
+ });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
