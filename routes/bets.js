@@ -15,18 +15,26 @@ router.get('/', async function(req, res) {
 router.get('/:user_id', function(req, res) {
     Bet.find({userID: req.params['user_id']}, async function (err, bets){
         // Check for win or loss
-        for(i in bets){
+        for(var i in bets){
             let result = await upcomingGames(bets[i]["week"],res);
-            // WHY IS THIS UNDIFFINED
-            console.log(bets[i]);
-            res.send(bets);
-            // for(j in result){
-            //     if(bets[i]["gameID"] == result[j]["id"]){
-            //         bets[i]["Victory"] = true;
-            //     }
-            // }
+            for(var j in result){
+                if(bets[i]["gameID"] == result[j]["id"]){
+                    if(bets[i]["competitor1"] == true && result[j]["competitors"][0]["win"] == true){
+                        bets[i]["victory"] = true;
+                    }
+                    else if(bets[i]["competitor1"] == false && result[j]["competitors"][0]["win"] == false){
+                        bets[i]["victory"] = true;
+                    }
+                    else if(bets[i]["competitor1"] == true && result[j]["competitors"][0]["win"] == false){
+                        bets[i]["victory"] = false;
+                    }
+                    else if(bets[i]["competitor1"] == false && result[j]["competitors"][0]["win"] == true){
+                        bets[i]["victory"] = false;
+                    }
+                }
+            }
         }
-        //res.send(bets);
+        res.send(bets);
     });
 });
 
@@ -34,10 +42,10 @@ router.get('/:user_id', function(req, res) {
 router.post('/', function(req, res, next) {
     var sampleBet = {
         userID: 1,
-        gameID: 401326478,
+        gameID: 401326471,
         week:10,
-        competitor1: true,
-        competitor2: false
+        competitor1: false,
+        competitor2: true
     };
     // Add object to database
     Bet.create(sampleBet, function(err, newBet){

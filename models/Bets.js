@@ -7,7 +7,8 @@ const betSchema = new mongoose.Schema({
     gameID: Number,
     week: Number,
     competitor1: Boolean,
-    competitor2: Boolean
+    competitor2: Boolean,
+    victory: Boolean
  });
 
 
