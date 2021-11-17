@@ -10,9 +10,9 @@ router.get('/profile', function(req, res, next) {
   res.render('profile', { title: 'Express' });
 });
 
-router.get('/bets', function(req, res, next) {
-  res.render('bets', { title: 'Express' });
-});
+// router.get('/bets', function(req, res, next) {
+//   res.render('bets', { title: 'Express' });
+// });
 
 router.get('/setOdds', function(req, res, next) {
   res.render('setOdds', { title: 'Express' });
