@@ -5,13 +5,7 @@ const Bet = require('../models/Bets.js');
 
 
 
-/* GET home page. */
-router.get('/', async function(req, res) {
-    var input = 10;
-        let result = await upcomingGames(input,res);
-        res.send(result);
-});
-/* GET a users bets. */
+/* GET a users bets. This is also where it checks if your bet was right or wrong */
 router.get('/:user_id', function(req, res) {
     Bet.find({userID: req.params['user_id']}, async function (err, bets){
         // Check for win or loss
@@ -21,15 +15,19 @@ router.get('/:user_id', function(req, res) {
                 if(bets[i]["gameID"] == result[j]["id"]){
                     if(bets[i]["competitor1"] == true && result[j]["competitors"][0]["win"] == true){
                         bets[i]["victory"] = true;
+                        bets[i].save();
                     }
                     else if(bets[i]["competitor1"] == false && result[j]["competitors"][0]["win"] == false){
                         bets[i]["victory"] = true;
+                        bets[i].save();
                     }
                     else if(bets[i]["competitor1"] == true && result[j]["competitors"][0]["win"] == false){
                         bets[i]["victory"] = false;
+                        bets[i].save();
                     }
                     else if(bets[i]["competitor1"] == false && result[j]["competitors"][0]["win"] == true){
                         bets[i]["victory"] = false;
+                        bets[i].save();
                     }
                 }
             }
@@ -40,15 +38,16 @@ router.get('/:user_id', function(req, res) {
 
 /* POST URL Path /bets/. */
 router.post('/', function(req, res, next) {
+    // THIS IS WHAT THE REQUEST BODY NEEDS TO LOOK LIKE
     var sampleBet = {
         userID: 1,
         gameID: 401326471,
-        week:10,
+        week:11,
         competitor1: false,
         competitor2: true
     };
     // Add object to database
-    Bet.create(sampleBet, function(err, newBet){
+    Bet.create(req.body, function(err, newBet){
     if(err){
         console.log(err)
         res.status(400).send();
