@@ -5,14 +5,9 @@ const axios = require('axios');
 
 /* GET home page. */
 router.get('/', async function(req, res) {
-    var input = 10;
-    try{
+    var input = 11;
         let result = await upcomingGames(input,res);
         res.send(result);
-    }
-    catch{
-        // This is for an error that occurs when the promise is fufilled that does not effect functionallity
-    }
 });
 
 /* takes date as input and returns games that week*/
@@ -32,7 +27,6 @@ async function OLDupcomingGames(input, res){
         }
 
     }
-    //res.send(ans);
     return ans;
 }
 
@@ -53,7 +47,7 @@ async function upcomingGames(week,res){
         }
 
     }
-    res.send(ans);
+    return ans;
 }
 /* Gets the schedule for a given week*/
 async function getSchez(week){
