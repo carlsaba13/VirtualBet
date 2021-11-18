@@ -12,8 +12,14 @@ router.get('/:game_id', function(req, res) {
 //YOU SHOULD ONLY BE ABLE TO DO THIS IF YOU ARE A BOOKIE
 /* POST URL Path /film/. */
 router.post('/', function(req, res, next) {
+    // THIS IS WHAT THE REQUEST BODY NEEDS TO LOOK LIKE
+    var sampleOdd = {
+        gameID: 401326471,
+        competitor1: 60,
+        competitor2: 40
+    };
     // Add object to database
-    Bet.create(req.body, function(err, newBet){
+    Odd.create(sampleOdd, function(err, newOdd){
     if(err){
         console.log(err)
         res.status(400).send();
