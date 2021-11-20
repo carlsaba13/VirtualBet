@@ -1,21 +1,112 @@
 <!DOCTYPE html>
 <!-- Carl Saba -->
 <html>
+    <script>
+        var betPage = document.getElementById("betPage");
+        function newBet() {
+            let p = new Promise(function(resolve, reject) {
+                let newBet = document.createElement("table");
+                let headerRow = newBet.insertRow("0");
+                let infoRow = newBet.insertRow("1");
+                let dateHeader = headerRow.insertCell("0");
+                dateHeader.innerHTML = "Date";
+                dateHeader.className = "info";
+                let teamsHeader = headerRow.insertCell("1");
+                dateHeader.innerHTML = "Away @ Home";
+                dateHeader.className = "info";
+                let timeHeader = headerRow.insertCell("2");;
+                dateHeader.innerHTML = "Time";
+                dateHeader.className = "info";
+                let moneyLineHeader = headerRow.insertCell("3");
+                dateHeader.innerHTML = "MoneyLine";
+                dateHeader.className = "info";
+                let amountHeader = headerRow.insertCell("4");
+                dateHeader.innerHTML = "Amount";
+                dateHeader.className = "info";
+                let date = infoRow.insertCell("0");
+                let teams = infoRow.insertCell("1");
+                let time = infoRow.insertCell("2");
+                let moneyLine = infoRow.insertCell("3");
+                let amount = infoRow.insertCell("4");
+                setTimeout(() => resolve(newBet), 1000);
+            })
+            .then(newBet => betPage.appendChild(newBet));
+        }
+        
+    </script>
   <link type="text/css" href="stylesheets/style.css" rel="stylesheet">
 <body>
     <div class="topnav">
         <a class="active" href="/"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/1200px-National_Football_League_logo.svg.png"></a>
         <a href="/profile">Profile</a>
-        <a href="/bets">Bets</a>
+        <a href="/betsAvailable">Bets</a>
     </div>
-    <div class="betPage">
-        <div class="date"></div>
-        <div class="teams"></div>
-        <div class="time"></div>
-        <div class="odds"></div>
-        <div class="betML"></div>
-        <div class="betSpread"></div>
-        
+    <div id="betPage">
+    <table class="betOffer" style="width:100%">
+        <tr>
+            <th class="info">Date</th>
+            <th class="info">Away @ Home</th>
+            <th class="info">Time</th>
+            <th class="info">Moneyline</th>
+            <th class="info">Amount</th>
+        </tr>
+        <tr>
+            <td class="betInfo">5/25</td>
+            <td class="betInfo">Patriots @ Chargers</td>
+            <td class="betInfo">3:00 P.M. EST</td>
+            <td class="betInfo"><div id="moneyline" class="twofold">
+                <table>
+                    <tr>
+                        <th>Chargers</th>
+                        <th>Patriots</th>
+                    </tr>
+                    <tr>
+                        <th><button type="button">+150</button></td>
+                        <th><button type="button">-120</button></td>
+                    </tr>
+                </table>
+            </div></td>
+            <td class="betInfo">
+                <form action="/bets/" method="post">
+                    <label for="amount">Enter the Amount you would like to bet:</label>
+                    <input type="text" class="amount">
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <table class="betOffer" style="width:100%">
+        <tr>
+            <th class="info">Date</th>
+            <th class="info">Away @ Home</th>
+            <th class="info">Time</th>
+            <th class="info">Moneyline</th>
+            <th class="info">Amount</th>
+        </tr>
+        <tr>
+            <td class="betInfo">5/25</td>
+            <td class="betInfo">Patriots @ Chargers</td>
+            <td class="betInfo">3:00 P.M. EST</td>
+            <td class="betInfo"><div id="moneyline" class="twofold">
+                <table>
+                    <tr>
+                        <th>Chargers</th>
+                        <th>Patriots</th>
+                    </tr>
+                    <tr>
+                        <th><button onclick = "newBet()" type="button">+150</button></td>
+                        <th><button type="button">-120</button></td>
+                    </tr>
+                </table>
+            </div></td>
+            <td class="betInfo">
+                <form action="/bets/" method="post">
+                    <label for="amount">Enter the Amount you would like to bet:</label>
+                    <input type="text" class="amount">
+                </form>
+            </td>
+        </tr>
+    </table>
     </div>
 </body>
 </html>

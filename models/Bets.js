@@ -3,12 +3,25 @@ const Schema = mongoose.Schema;
 
 const betSchema = new mongoose.Schema({
 
-    userID: Number,
+    email: String,
     gameID: Number,
     week: Number,
-    competitor1: Boolean,
-    competitor2: Boolean,
+    home: Boolean,
+    odds: Number,
+    amount: Number,
     victory: Boolean
+
+    /*
+    {
+        email: 2
+        game_id: 34
+        week: 12
+        home: True
+        odds: -150
+        amount: 300
+        victory: null
+    }
+    */
  });
 
 
