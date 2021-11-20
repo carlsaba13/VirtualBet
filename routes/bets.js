@@ -16,10 +16,12 @@ router.get('/:user_id', function(req, res) {
                     if(bets[i]["competitor1"] == true && result[j]["competitors"][0]["win"] == true){
                         bets[i]["victory"] = true;
                         bets[i].save();
+                        // Edit balance
                     }
                     else if(bets[i]["competitor1"] == false && result[j]["competitors"][0]["win"] == false){
                         bets[i]["victory"] = true;
                         bets[i].save();
+                        // Edit balance
                     }
                     else if(bets[i]["competitor1"] == true && result[j]["competitors"][0]["win"] == false){
                         bets[i]["victory"] = false;
@@ -40,11 +42,13 @@ router.get('/:user_id', function(req, res) {
 router.post('/', function(req, res, next) {
     // THIS IS WHAT THE REQUEST BODY NEEDS TO LOOK LIKE
     var sampleBet = {
-        userID: 1,
-        gameID: 401326471,
-        week:11,
-        competitor1: false,
-        competitor2: true
+        email: "user@example.com",
+        game_id: 34,
+        week: 12,
+        home: True,
+        odds: -150,
+        amount: 300,
+        victory: null
     };
     // Add object to database
     Bet.create(req.body, function(err, newBet){
