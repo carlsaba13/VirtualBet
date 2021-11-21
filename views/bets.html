@@ -1,40 +1,7 @@
 <!DOCTYPE html>
 <!-- Carl Saba -->
 <html>
-    <script>
-        function makeNewBet() {
-            var betTable = document.getElementById("betOffer");
-            let infoRow = document.getElementById("betOffer").insertRow("3");
-            let date = infoRow.insertCell("0");
-            date.innerHTML = "5/26";
-            date.className = "betInfo"
-            let teams = infoRow.insertCell("1");
-            teams.innerHTML = "Rams @ Ravens";
-            teams.className = "betInfo"
-            let time = infoRow.insertCell("2");
-            time.innerHTML = "1:00 P.M. EST";
-            time.className = "betInfo"
-            let moneyLine = infoRow.insertCell("3");
-            let moneyLineDiv = document.createElement("div");
-            moneyLineDiv.className = "twofold";
-            let moneyLineTable = document.createElement("table");
-            let moneyLineHR = moneyLineTable.insertRow("0");
-            let moneyLineH1 = document.createElement("th");
-            moneyLineH1.innerHTML = "Rams";
-            let moneyLineH2 = document.createElement("th");
-            moneyLineHR.appendChild(moneyLineH1);
-            moneyLineHR.appendChild(moneyLineH2);
-            moneyLineH2.innerHTML = "Ravens";
-            moneyLineDiv.appendChild(moneyLineTable)
-            //moneyLine.innerHTML = "-100";
-            moneyLine.className = "betInfo"
-            let amount = infoRow.insertCell("4");
-            amount.innerHTML = "+300";
-            amount.className = "betInfo"
-        }
-        
-    </script>
-  <link type="text/css" href="stylesheets/style.css" rel="stylesheet">
+    <link type="text/css" href="stylesheets/style.css" rel="stylesheet">
 <body>
     <div class="topnav">
         <a class="active" href="/"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/1200px-National_Football_League_logo.svg.png"></a>
@@ -61,15 +28,16 @@
                         <th>Patriots</th>
                     </tr>
                     <tr>
-                        <th><button type="button">+150</button></td>
-                        <th><button type="button">-120</button></td>
+                        <td><button type="button">+150</button></td>
+                        <td><button type="button">-120</button></td>
                     </tr>
                 </table>
             </div></td>
             <td class="betInfo">
                 <form action="/bets/" method="post">
-                    <label for="amount">Enter the Amount you would like to bet:</label>
+                    <label for="amount">Bet Amount:</label>
                     <input type="text" class="amount">
+                    <input type="submit" value="Place Bet">
                 </form>
             </td>
         </tr>
@@ -84,19 +52,21 @@
                         <th>Patriots</th>
                     </tr>
                     <tr>
-                        <th><button onclick = "makeNewBet()" type="button">+150</button></td>
-                        <th><button type="button">-120</button></td>
+                        <td><button onclick = "loadBets()" type="button">+150</button></td>
+                        <td><button type="button">-120</button></td>
                     </tr>
                 </table>
             </div></td>
             <td class="betInfo">
                 <form action="/bets/" method="post">
-                    <label for="amount">Enter the Amount you would like to bet:</label>
+                    <label for="amount">Bet Amount:</label>
                     <input type="text" class="amount">
+                    <input type="submit" value="Place Bet">
                 </form>
             </td>
         </tr>
     </table>
     </div>
+    <script src="../views/javascripts/displayBets.js"></script>
 </body>
 </html>
