@@ -26,7 +26,7 @@ passport.deserializeUser(function(user, done) {
 passport.use(new GoogleStrategy({
     consumerKey: "274914504437-7s9n0o76ei17nqnltaa9pjvtne1sna9m.apps.googleusercontent.com",
     consumerSecret: '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',
-    callbackURL: "http://localhost:3000/google/callback"
+    callbackURL: "https://virtual-bet.herokuapp.com/google/callback"
   },
   function(token, tokenSecret, profile, done) {
       User.findOrCreate({ googleId: profile.id }, function (err, user) {
