@@ -29,7 +29,7 @@ async function upcomingGames(week,res){
         //ans[i] = {"date":days[i], "games":[]};
         for(j in result[days[i]]['games']){
             //console.log(result[days[i]]['games'][j]["shortName"]);
-            ans[j] = ({"id":result[days[i]]['games'][j]["id"], "name": result[days[i]]['games'][j]["shortName"], "competitors": []});
+            ans[j] = ({"id":result[days[i]]['games'][j]["id"], "name": result[days[i]]['games'][j]["shortName"], "date": result[days[i]]['games'][j]["date"], "competitors": []});
             for(k in result[days[i]]['games'][j]['competitions']['0']['competitors']){
                 //console.log(result[days[i]]['games'][j]['competitions']['0']['competitors'][k]);
                 ans[j]['competitors'].push({"name": result[days[i]]['games'][j]['competitions']['0']['competitors'][k]['team']['displayName'],"score": result[days[i]]['games'][j]['competitions']['0']['competitors'][k]['score'], "win": result[days[i]]['games'][j]['competitions']['0']['competitors'][k]['winner']});

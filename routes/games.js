@@ -5,7 +5,7 @@ const axios = require('axios');
 const upcomingGames = require('./espn.js');
 
 /* GET home page. */
-router.get('/', async function(req, res) {
+router.get('/:week', async function(req, res) {
     var input = 11;
         let result = await upcomingGames(input,res);
         res.send(result);
