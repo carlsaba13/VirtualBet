@@ -2,6 +2,7 @@
 <html>
   <link type="text/css" href="stylesheets/style.css" rel="stylesheet">
   <script src=../routes/index.js></script>
+  <script type="text/javascript" src="javascripts/setOdds.js" async></script>
 <body>
     <div class="topnav">
         <a class="active" href="/"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/1200px-National_Football_League_logo.svg.png"></a>
@@ -10,7 +11,13 @@
     </div>
 
     <div class="body">
-        <p>This is setOdds</p>
+        <form id="week-form" onsubmit="event.preventDefault(); validate();">
+            <label for="select-week">Select week: </label>
+            <select id="select-week"></select>
+            <input type="button" name="Submit" value="Submit" onclick="validate();"/>
+        </form>
+
     </div>
+
 </body>
 </html>
