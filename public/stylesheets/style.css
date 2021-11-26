@@ -66,12 +66,29 @@ body {
   color: white;
 }
 
-.top, .bottom, .betPage {
+.top, .bottom {
   margin: 20px;
   display: grid;
   grid-gap: 5px;
   width: 700px;
 }
+
+#betOffer {
+  margin-top: 20px;
+}
+
+#betOffer, #betOffer th, #betOffer td {
+  width: 100%;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+#betOffer th, #betOffer td {
+  padding: 5px;
+  width: 20%;
+  text-align: center;
+}
+
 .top {
   grid-template-columns: 1fr 1fr;
 }
@@ -79,16 +96,18 @@ body {
   grid-template-rows: 1fr 1fr;
 }
 
-.betPage {
-  grid-template-columns: 1fr 1fr;
-}
-
 .twofold {
   width: 70%;
-  margin: 20px;
+  margin-left: 20px;
   float: left;
   padding: 20px;
+}
+
+#personalInfo, #moneyInfo {
   border: 2px outset grey;
+  margin-left: 30%;
+  margin-left: 30%;
+  margin-right: 40%;
 }
 
 #deposit {

@@ -15,8 +15,8 @@ router.post('/', function(req, res, next) {
     // THIS IS WHAT THE REQUEST BODY NEEDS TO LOOK LIKE
     var sampleOdd = {
         gameID: 401326471,
-        competitor1: 60,
-        competitor2: 40
+        home: -110,
+        away: -110
     };
     // Add object to database
     Odd.create(sampleOdd, function(err, newOdd){

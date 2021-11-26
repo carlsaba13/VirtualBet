@@ -7,6 +7,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var gamesRouter = require('./routes/games');
@@ -64,19 +66,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send(201);
 });
-// Jack will need to insert consumerKey & consumerSecret
 
-passport.use(new GoogleStrategy({
-  consumerKey: "274914504437-l286j72u3vr9sfqqeskpg8v0luoddkve.apps.googleusercontent.com",
-  consumerSecret: "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",
-  callbackURL: "http://www.example.com/auth/google/callback"
-},
-function(token, tokenSecret, profile, done) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return done(err, user);
-    });
-}
-));
+
 module.exports = app;
