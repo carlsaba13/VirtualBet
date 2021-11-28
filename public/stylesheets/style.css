@@ -152,4 +152,26 @@ body {
 
 .game {
   display: flex;
+  margin-top: 30px;
+}
+
+.set-odds-game-name, .set-odds-game-date {
+  width: 120px;
+  border:1px solid #333;
+  text-align: center;
+}
+
+.set-odds-input-form-button, .set-odds-button, #submit-week-button {
+  background-color:#4CAF50;
+  color:white;
+  border: #4CAF50;
+  margin-right: 10px;
+}
+
+.set-odds-input-form-button:hover, .set-odds-button:hover, #submit-week-button:hover {
+  background-color: darkgreen;
+}
+
+#select-week {
+  margin-top: 20px;
 }

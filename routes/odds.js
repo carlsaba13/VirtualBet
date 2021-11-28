@@ -18,8 +18,11 @@ router.post('/', function(req, res, next) {
         home: -110,
         away: -110
     };
+
+    console.log(req.body);
+    
     // Add object to database
-    Odd.create(sampleOdd, function(err, newOdd){
+    Odd.create(req.body, function(err, newOdd){
     if(err){
         console.log(err)
         res.status(400).send();
