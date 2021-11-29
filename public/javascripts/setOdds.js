@@ -133,7 +133,7 @@ async function postOdds(gameID, homeInputID, awayInputID) {
     console.log(parseInt(document.getElementById(homeInputID).value));
     console.log(parseInt(document.getElementById(awayInputID).value));
     
-    const res = await fetch('http://localhost:3000/film/', {
+    const res = await fetch('http://localhost:3000/odds/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
