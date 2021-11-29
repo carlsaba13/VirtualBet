@@ -1,4 +1,10 @@
-getGames(10);
+function validateWeek(){
+    new Promise(function(resolve, reject) {
+        resolve(getGames(document.getElementById('select-week').value));
+    })
+    .then(s => document.getElementById('week-form').remove());
+    
+}
 
 function getGames(week) {
     fetch('/games/'.concat(week))

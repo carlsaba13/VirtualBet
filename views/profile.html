@@ -2,94 +2,66 @@
 <!-- Carl Saba -->
 <html>
   <link type="text/css" href="stylesheets/style.css" rel="stylesheet">
+  <script type="text/javascript" src="javascripts/displayProfileInfo.js"></script>
 <body>
   <div class="topnav">
     <a class="active" href="/"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/1200px-National_Football_League_logo.svg.png"></a>
     <a href="/profile">Profile</a>
-    <a href="/bets">Bets</a>
+    <a href="/betsAvailable">Bets</a>
   </div>
   <div class="top">
     <div class="twofold" id="personalInfo">
       <table>
         <tr>
           <td class="info">Email</td>
-          <td id="email">carlsaba@gmail.com</td>
+          <td id="email">BLANK</td>
         </tr>
         <tr>
           <td class="info">Name</td>
-          <td id="name">Francisco Chang</td>
+          <td id="name">BLANK</td>
         </tr>
         <tr>
           <td class="info">Age of Account</td>
-          <td id="age">17 years</td>
+          <td id="age">BLANK</td>
         </tr>
       </table>
     </div>
-    <div class="twofold" id="balance">
+    <div class="twofold" id="moneyInfo">
       <table>
         <tr>
           <td class="info">Balance</td>
-          <td id="balance">$666.69</td>
+          <td id="balance">BLANK</td>
         </tr>
         <tr>
           <td class="info">Total Deposited</td>
-          <td id="name">$66666666</td>
+          <td id="totalDeposited">BLANK</td>
         </tr>
         <tr>
           <td class="info">Total Won</td>
-          <td id="totalWinnings">$666</td>
+          <td id="totalWinnings">BLANK</td>
         </tr>
         <tr>
           <td class="info">Bets Placed</td>
-          <td id="numberBets">555</td>
+          <td id="numberBets">BLANK</td>
         </tr>
       </table>
     </div>
   </div>
   <div id="deposit">
-    <button id="depositButton" href="/deposit">Deposit</button>
+    <a href="/deposit"><button id="depositButton">Deposit</button></a>
   </div>
+  <br><br><br>
   <div class="bottom">
-    <div class="betPlaced">
-      <table>
+    <h2 id="history">Bet History</h2>
+      <table id="oldBets" style="width:100%">
         <tr>
-          <td class="info">Date</td>
-          <td id="betDate">4/20/69</td>
+            <th class="info">Date</th>
+            <th class="info">Pick</th>
+            <th class="info">Time</th>
+            <th class="info">Odds</th>
+            <th class="info">Amount</th>
         </tr>
-        <tr>
-          <td class="info">Game</td>
-          <td id="betType">Patriots (+7)</td>
-        </tr>
-        <tr>
-          <td class="info">Odds</td>
-          <td id="betOdds">(-115)</td>
-        </tr>
-        <tr>
-          <td class="info">Amount</td>
-          <td id="betAmount">$15</td>
-        </tr>
-      </table>
-    </div>
-    <div class="betPlaced">
-      <table>
-        <tr>
-          <td class="info">Date</td>
-          <td id="betDate">4/20/69</td>
-        </tr>
-        <tr>
-          <td class="info">Game</td>
-          <td id="betType">Patriots (+7)</td>
-        </tr>
-        <tr>
-          <td class="info">Odds</td>
-          <td id="betOdds">(-115)</td>
-        </tr>
-        <tr>
-          <td class="info">Amount</td>
-          <td id="betAmount">$15</td>
-        </tr>
-      </table>
-    </div>
+    </table>
   </div>
 </body>
 </html>
