@@ -1,26 +1,47 @@
+function validateWeek(){
+    new Promise(function(resolve, reject) {
+        resolve(getGames(document.getElementById('select-week').value));
+    })
+    .then(s => document.getElementById('week-form').remove());
+    
+}
 
-fetch("/games/10")
+function getGames(week) {
+    fetch('/games/'.concat(week))
     .then(res => res.json())
     .then(data => {
         for (i in data) {
             let game = data[i];
+            let dateTime = game["date"].split("T");
+            let date = dateTime[0];
+            let time = dateTime[1].slice(0, -1) + "";
             let gameID = game["id"];
             console.log(gameID);
             let competitors = game["competitors"];
             let team1 = competitors["0"]["name"];
             let team2 = competitors["1"]["name"];
-            fetch('/odds/'.concat(401326471))
-            .then(res => res.json())
+            fetch('/odds/'.concat(gameID))
+            .then(res => {
+                if (!res) {
+                    console.log("failed");
+                    throw 'ErrorCaused';
+                } else {
+                    return res.json()
+                }
+            })
             .then(data => {
                 for (i in data) {
                     let homeOdds = data["home"];
                     let awayOdds = data["away"];
-                    makeNewBet("5/25", team1, team2, "1:00 P.M. EST", homeOdds, awayOdds);
+                    makeNewBet(date, team1, team2, time, homeOdds, awayOdds);
                 }
-            });
+            }).catch(error => console.log(error));    
+            
         }
         //console.log(JSON.stringify(data))
     });
+}
+
 
 function makeMoneyLine(team1, team2, line1, line2) {
     let table = document.createElement("table");

@@ -172,6 +172,32 @@ body {
   background-color: darkgreen;
 }
 
-#select-week {
+#select-week, #select-week1 {
   margin-top: 20px;
+}
+
+#history {
+  margin-left: 42%;
+  margin-right: 48%;
+}
+
+#depositForm, #depositSubmit {
+  width: 100%;
+  font-size: 16px;
+  margin: 10px;
+  padding: 12px 20px 12px 40px;
+}
+
+#depositForm {
+  background-image: url('https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/green_prodpictdollar_1484336218-1.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  background-color: white;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#depositSubmit {
+  background-color: green;
 }
