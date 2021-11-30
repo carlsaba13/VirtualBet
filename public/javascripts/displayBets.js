@@ -1,12 +1,18 @@
 const teams = ["Las Vegas Raiders", "Baltimore Ravens"];
 var teamBetOn = null;
 var gameBetOn = null;
+var betHome = null;
+var week = null;
 
 function validateWeek(){
     new Promise(function(resolve, reject) {
-        resolve(getGames(document.getElementById('select-week').value));
+        week = document.getElementById('select-week').value;
+        resolve(week);
     })
-    .then(s => document.getElementById('week-form').remove());
+    .then(week => {
+        getGames(week);
+        document.getElementById('week-form').remove();
+    });
     
 }
 
@@ -54,8 +60,8 @@ function makeMoneyLine(team1, team2, line1, line2, gameID) {
     let moneyLine2 = moneyLine.insertCell("1");
     
     console.log(line1);
-    button1 = makeButton(line1, team1, gameID);
-    button2 = makeButton(line2, team2, gameID);
+    button1 = makeButton(line1, team1, gameID, false);
+    button2 = makeButton(line2, team2, gameID, true);
     let td1 = document.createElement("td");
     td1.appendChild(button1);
     let td2 = document.createElement("td");
@@ -65,22 +71,22 @@ function makeMoneyLine(team1, team2, line1, line2, gameID) {
     return table;
 }
 
-function makeButton(odd, team, gameID) {
+function makeButton(odd, team, gameID, home) {
     let buttonObj = document.createElement("button");
     buttonObj.type = "button";
     buttonObj.innerHTML = odd;
     buttonObj.addEventListener("click", function() {
         teamBetOn = team;
         gameBetOn = gameID;
+        betHome = home;
         console.log(team);
         console.log(gameID);
       });
     return buttonObj;
 }
 
-function betForm() {
+function betForm(odds1, odds2) {
     let form = document.createElement("form");
-    form.addEventListener('submit', betPlaced);
     //form.action = "/bets/";
     //form.method = "post";
     let l = document.createElement("label");
@@ -89,6 +95,41 @@ function betForm() {
     l.innerHTML = '<label for="amount">Bet Amount:</label>';
     i.type = "number";
     i.class = "amount";
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (gameBetOn == null || teamBetOn == null || !i.value) {
+            console.log("You need to select a bet amount and a team to bet on");
+        } else {
+            var o = null;
+            if (betHome) {
+                o = odds2;
+            } else {
+                o = odds1;
+            }
+            console.log(o);
+            console.log(i.value);
+            alert("Bet on ".concat(gameBetOn, " and ", teamBetOn, " and ", i.value));
+            const myInit =    
+                {
+                email: "user@example2.com",
+                gameID: parseInt(gameBetOn),
+                week: parseInt(week),
+                home: betHome,
+                odds: parseInt(o),
+                amount: parseInt(i.value),
+                victory: null
+                };
+            console.log(myInit);
+            fetch('http://localhost:3000/bets', {
+                method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(myInit)
+            }).then(res => console.log(res));
+        }
+    });
     s.type = "submit";
     s.value = "Place Bet";
     s.onclick = "return betPlaced()";
@@ -98,12 +139,8 @@ function betForm() {
     return form;
 }
 
-function betPlaced() {
-    if (gameBetOn == null || teamBetOn == null) {
-        alert("Select a team to bet on first");
-    } else {
-        alert("Bet on ".concat(gameBetOn, " and ", teamBetOn));
-    }
+function betPlaced(i) {
+    
 }
 
 function makeNewBet(gameDate, team1, team2, gameTime, homeLine, awayLine, gameID) {
@@ -117,11 +154,11 @@ function makeNewBet(gameDate, team1, team2, gameTime, homeLine, awayLine, gameID
     let time = infoRow.insertCell("2");
     time.innerHTML = gameTime;
     time.className = "betInfo"
-    let moneyLineHTML = makeMoneyLine(team1, team2, homeLine, awayLine, gameID);
+    let moneyLineHTML = makeMoneyLine(team1, team2, awayLine, homeLine, gameID);
     let moneyLine = infoRow.insertCell("3");
     moneyLine.appendChild(moneyLineHTML);
     moneyLine.className = "betInfo"
     let amount = infoRow.insertCell("4");
-    let formHTML = betForm();
+    let formHTML = betForm(awayLine, homeLine);
     amount.appendChild(formHTML);
 }
