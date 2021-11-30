@@ -13,7 +13,7 @@ for(let i = 0; i < weekList.length; i++) {
 }
 
 //Handles week selection form submission
-async function validate(){
+async function validate() {
 
     //Gets week value selected by user and fetches all games' info for that week
     const weekSelected = document.getElementById('select-week').value;
