@@ -229,5 +229,19 @@ body {
 }
 
 .sign-in-label {
-  float: left;
+  display: table-cell;
+}
+
+#email {
+  display: table-cell;
+}
+
+#password {
+  display: table-cell;
+}
+
+#sign-in-form {
+  display: table;
+  margin-left: 25%;
+  margin-bottom: 20%;
 }

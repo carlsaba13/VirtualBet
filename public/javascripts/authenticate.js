@@ -14,16 +14,16 @@ async function validateSignIn() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('pass').value;
 
-    let user = await fetch('http://localhost:3000/users/' + email);
+    let user = await fetch('/users/' + email);
     user = await user.json();
 
     if(user.password === hashCode(password)) {
     //if(user.password === password) {
         document.cookie = "email=" + user.email;
         if(user.bookie)
-            window.location.replace("http://localhost:3000/statistics");
+            window.location.replace("/statistics");
         else
-            window.location.replace("http://localhost:3000/profile");           
+            window.location.replace("/profile");           
     } else {
         alert("Incorrect username or password.");
     }
@@ -44,7 +44,7 @@ async function validateNewUser() {
     });
 
     //Sends POST request to server
-    let res = await fetch('http://localhost:3000/users', {
+    let res = await fetch('/users', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
