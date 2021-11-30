@@ -10,7 +10,7 @@ window.onload = init;
 async function init() {
     let balanceDisplay = document.getElementById("displayBalance");
     const cookie = document.cookie.split('=');
-    email = cookie[0];
+    email = cookie[1];
     //console.log(cookie);
     fetch("/users/".concat(email))
     .then(res => res.json())

@@ -5,15 +5,25 @@ var email = null;
 async function init() {
     let balanceDisplay = document.getElementById("displayBalance");
     const cookie = document.cookie.split('=');
-    email = cookie[0];
+    email = cookie[1];
     console.log(cookie);
+    console.log(email);
     fetch("/users/".concat(email))
     .then(res => res.json())
     .then(data => {
         balance = data["balance"];
         balanceDisplay.innerHTML = "Balance: $" + data["balance"];
         console.log(data);
+        setBalance(data["balance"]);
     });
+    setEmail(email);
+    //setName("Carl Saba");
+    
+    //setTotalDeposited(55000);
+    //setTotalWinnings(33000);
+    //setNumberBets(6921);
+
+    //createBetDiv("5/26", "1:00 P.M. EST", "Patriots", "-115", "$15");
 }
 
 function setEmail(email) {
@@ -36,14 +46,6 @@ function setNumberBets(nBets) {
 }
 
 setTimeout(() => {
-    setEmail(email);
-    setName("Carl Saba");
-    setBalance(balance);
-    setTotalDeposited(55000);
-    setTotalWinnings(33000);
-    setNumberBets(6921);
-
-    createBetDiv("5/26", "1:00 P.M. EST", "Patriots", "-115", "$15");
 }, 1000);
 
 
