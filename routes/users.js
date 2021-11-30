@@ -40,6 +40,7 @@ router.put('/:email', function(req, res, next) {
               res.status(400).send();
             }
             else{
+              document.cookie = "Login =" + true + ":" + "Username =" + newUser.Email
               res.status(201).send();
             }
           });
@@ -47,10 +48,9 @@ router.put('/:email', function(req, res, next) {
       }
     });
     res.status(201).send();
-  }
-  else{
-    res.status(404).send();
-  }
+  
 });
+
+
 
 module.exports = router;
