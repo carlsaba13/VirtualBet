@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const User = require('../models/Users.js');
+const User = require('../models/User.js');
 
 //https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
 String.prototype.hashCode = function() {
@@ -46,7 +46,7 @@ router.put('/:email', function(req, res, next) {
         }
       }
     });
-    res.status(201).send();
+    res.send();
   
 });
 
