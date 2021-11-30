@@ -8,10 +8,10 @@
 ### Requirements:
 * User Roles: Bettor, Bookie
 * Accounts: email, password, role, balance
-* MongoDB
-* Sportsdataverse
-* ESPN
-* Heroku
+* Database: MongoDB
+* Package not discussed in class: Sportsdataverse
+* Outside REST API: ESPN
+* Hosting: Heroku
 
 ### Instructions
 Link to Application: https://virtual-bet.herokuapp.com/
