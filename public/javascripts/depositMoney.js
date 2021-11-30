@@ -20,9 +20,8 @@ async function init() {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         if (!i.value) {
-            console.log("You have to insert an amount to bet first");
+            alert("You have to insert an amount to bet first");
         } else {
-            console.log('email  ', email,  'amount', i.value);
             const myInit = {
                 deposit: parseInt(i.value)
             };
@@ -33,7 +32,14 @@ async function init() {
                 'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(myInit)
-            }).then(res => console.log(res));
+            }).then(res => {
+                if (res.status == 201) {
+                    alert("Successfully deposited $" + i.value)
+                    location.reload();
+                } else {
+                    alert(res.status);
+                }
+            });
         }
     })
 }
