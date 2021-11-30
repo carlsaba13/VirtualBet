@@ -2,7 +2,8 @@
 <html>
   <link type="text/css" href="stylesheets/style.css" rel="stylesheet">
   <script src=../routes/index.js></script>
-<body>
+  <script type="text/javascript" src="javascripts/statistics.js" async></script>
+<body onload="addStatistics()">
     <div class="topnav">
         <a class="active" href="/"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/1200px-National_Football_League_logo.svg.png"></a>
         <a href="/statistics">Statistics</a>
@@ -11,12 +12,12 @@
 
     <div class="body">
         <p>This is Statistics</p>
-        <div id="totalUsers"></div>
-        <div id="betsPlaced"></div>
-        <div id="betsWon"></div>
-        <div id="netProfit"></div>
-        <div id="avgBet"></div>
-        <div id="avgProfitBet"></div>
+        <div id="total-users"></div>
+        <div id="bets-placed"></div>
+        <div id="bets-won"></div>
+        <div id="net-profit"></div>
+        <div id="avg-bet"></div>
+        <div id="avg-profit-per-bet"></div>
     </div>
 </body>
 </html>

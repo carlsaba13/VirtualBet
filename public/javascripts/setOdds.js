@@ -13,7 +13,7 @@ for(let i = 0; i < weekList.length; i++) {
 }
 
 //Handles week selection form submission
-async function validate(){
+async function validate() {
 
     //Gets week value selected by user and fetches all games' info for that week
     const weekSelected = document.getElementById('select-week').value;
@@ -69,7 +69,7 @@ async function validate(){
             gameInfoDiv.appendChild(setML);
         }
 
-
+        //Appends entire game info container onto setOdds page
         setOddsBody.appendChild(gameInfoDiv);
     });
 }
@@ -122,17 +122,21 @@ function loadSetOddsButtonInput(div, setOddsFormID, gameID) {
 
 }
 
+//Sends POST request with inputted odds for specific game ID
 async function postOdds(gameID, homeInputID, awayInputID) {
+    //Creates JSON request body
     const odds = JSON.stringify({
         gameID: gameID,
         home: parseInt(document.getElementById(homeInputID).value),
         away: parseInt(document.getElementById(awayInputID).value)
     });
 
+    //Debug JSON body output
     console.log(gameID);
     console.log(parseInt(document.getElementById(homeInputID).value));
     console.log(parseInt(document.getElementById(awayInputID).value));
     
+    //Sends POST request to server
     const res = await fetch('http://localhost:3000/odds/', {
         method: 'POST',
         headers: {
@@ -146,6 +150,7 @@ async function postOdds(gameID, homeInputID, awayInputID) {
       console.log(content);
 }
 
+//Loads validate function onto week form
 function init(){
     document.getElementById('week-form').onsubmit = validate;
 }
