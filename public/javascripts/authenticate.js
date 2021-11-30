@@ -5,10 +5,15 @@ async function validateSignIn() {
     let user = await fetch('http://localhost:3000/users/' + email);
     user = await user.json();
 
-    if(user.password === password)
+    if(user.password === password) {
         document.cookie = "email=" + user.email;
-    else
+        if(user.bookie)
+            window.location.replace("http://localhost:3000/statistics");
+        else
+            window.location.replace("http://localhost:3000/profile");           
+    } else {
         alert("Incorrect username or password.");
+    }
 
     console.log(user);
 

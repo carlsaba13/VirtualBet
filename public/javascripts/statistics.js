@@ -13,7 +13,31 @@ async function addStatistics() {
 
     //Add total number of bets
     let bets = []
-    
+
 
 
 }
+
+//Loads validate function onto week form
+async function init(){
+    const cookie = document.cookie.split('=');
+
+    if(cookie[0] === '') {
+        const h1 = document.createElement('h1');
+        h1.innerHTML = "You do not have access to this page.";
+        document.getElementById('stats-body').appendChild(h1);
+    }
+
+    console.log(cookie);
+    let user = await fetch('http://localhost:3000/users/' + cookie[1]);
+    user = await user.json();
+
+    if(user.bookie === 0) {
+        const h1 = document.createElement('h1');
+        h1.innerHTML = "You do not have access to this page.";
+        document.getElementById('stats-body').appendChild(h1);
+    }
+
+}
+
+window.onload = init;
