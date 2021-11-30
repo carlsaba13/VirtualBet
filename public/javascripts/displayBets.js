@@ -1,8 +1,38 @@
-const teams = ["Las Vegas Raiders", "Baltimore Ravens"];
 var teamBetOn = null;
 var gameBetOn = null;
 var betHome = null;
 var week = null;
+var email = null;
+var balance = null;
+
+window.onload = init;
+
+async function init() {
+    let balanceDisplay = document.getElementById("displayBalance");
+    const cookie = document.cookie.split('=');
+    email = cookie[0];
+    //console.log(cookie);
+    fetch("/users/".concat(email))
+    .then(res => res.json())
+    .then(data => {
+        balance = data["balance"];
+        balanceDisplay.innerHTML = "Balance: $" + data["balance"];
+    });
+}
+
+const selectWeek = document.getElementById('select-week');
+
+//Test list for dynamically updating the DOM
+//TODO: use fetch to get applicable weeks
+const weekList = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
+
+//Adds applicable weeks to option list
+for(let i = 0; i < weekList.length; i++) {
+    const opt = document.createElement('option');
+    opt.value = weekList[i];
+    opt.innerHTML = weekList[i];
+    selectWeek.appendChild(opt);
+}
 
 function validateWeek(){
     new Promise(function(resolve, reject) {
@@ -94,6 +124,8 @@ function betForm(odds1, odds2) {
     let s = document.createElement("input");
     l.innerHTML = '<label for="amount">Bet Amount:</label>';
     i.type = "number";
+    i.min = 1;
+    i.max = balance;
     i.class = "amount";
     form.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -111,7 +143,7 @@ function betForm(odds1, odds2) {
             alert("Bet on ".concat(gameBetOn, " and ", teamBetOn, " and ", i.value));
             const myInit =    
                 {
-                email: "user@example2.com",
+                email: email,
                 gameID: parseInt(gameBetOn),
                 week: parseInt(week),
                 home: betHome,

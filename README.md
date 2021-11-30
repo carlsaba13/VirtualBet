@@ -9,7 +9,7 @@
 * User Roles: Bettor, Bookie
 * Accounts: email, password, role, balance
 * Database: MongoDB
-* Package not discussed in class: Sportsdataverse
+* Library: Axios
 * Outside REST API: ESPN
 * Hosting: Heroku
 
