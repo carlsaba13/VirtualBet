@@ -27,7 +27,6 @@ router.get('/:email', function(req, res) {
 
 // PUT request that creats or edits specific user or returns 404 if user schema is wrong
 router.put('/:email', function(req, res, next) {
-  if(checkSchema(req.body) == true){
     User.findOneAndUpdate({email: req.params['email']}, req.body, function (err, user) {
       if (!err) {
         // If the document doesn't exist
