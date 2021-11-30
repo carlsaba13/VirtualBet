@@ -165,7 +165,9 @@ async function init(){
     let user = await fetch('/users/' + cookie[1]);
     user = await user.json();
 
-    if(user.bookie === 1) {
+    console.log(user);
+
+    if(user.bookie === true) {
         document.getElementById('week-form').onsubmit = validate;
     } else {
         document.getElementById('week-form').remove();
