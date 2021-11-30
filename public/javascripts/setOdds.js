@@ -151,8 +151,29 @@ async function postOdds(gameID, homeInputID, awayInputID) {
 }
 
 //Loads validate function onto week form
-function init(){
-    document.getElementById('week-form').onsubmit = validate;
+async function init(){
+    const cookie = document.cookie.split('=');
+
+    if(cookie[0] === '') {
+        document.getElementById('week-form').remove();
+        const h1 = document.createElement('h1');
+        h1.innerHTML = "You do not have access to this page.";
+        document.getElementById('set-odds-body').appendChild(h1);
+    }
+
+    console.log(cookie);
+    let user = await fetch('http://localhost:3000/users/' + cookie[1]);
+    user = await user.json();
+
+    if(user.bookie === 1) {
+        document.getElementById('week-form').onsubmit = validate;
+    } else {
+        document.getElementById('week-form').remove();
+        const h1 = document.createElement('h1');
+        h1.innerHTML = "You do not have access to this page.";
+        document.getElementById('set-odds-body').appendChild(h1);
+    }
+
 }
 
 window.onload = init;
