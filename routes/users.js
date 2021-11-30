@@ -3,16 +3,16 @@ var router = express.Router();
 const User = require('../models/Users.js');
 
 //https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
-String.prototype.hashCode = function() {
-  var hash = 0, i, chr;
-  if (this.length === 0) return hash;
-  for (i = 0; i < this.length; i++) {
-    chr   = this.charCodeAt(i);
-    hash  = ((hash << 5) - hash) + chr;
-    hash |= 0; // Convert to 32bit integer
+function hashCode (str){
+  var hash = 0;
+  if (str.length == 0) return hash;
+  for (i = 0; i < str.length; i++) {
+      char = str.charCodeAt(i);
+      hash = ((hash<<5)-hash)+char;
+      hash = hash & hash; // Convert to 32bit integer
   }
-  return hash;
-};
+  return hash.toString();
+}
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -29,14 +29,18 @@ router.get('/:email', function(req, res) {
 router.post('/', function(req, res, next) {
   // THIS IS WHAT THE REQUEST BODY NEEDS TO LOOK LIKE
   var user = {
-    email: "email",
-    bookie: false,
-    password: "pass",
+    email: req.body.email,
+    bookie: req.body.bookie,
+    password: hashCode(req.body.password),
     balance: 100
   }
+<<<<<<< HEAD
   req.body.password = req.body.Password;
+=======
+  
+>>>>>>> b64901cb72e309e5c01f64073905c61316fb1c6d
   // Add object to database
-  User.create(req.body, function(err, newBet){
+  User.create(user, function(err, newBet){
   if(err){
       console.log(err)
       res.status(400).send();
@@ -45,6 +49,7 @@ router.post('/', function(req, res, next) {
       res.status(201).send();
   }
   });
+
 });
 
 router.post('/:email', function(req, res, next) {
