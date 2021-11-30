@@ -23,7 +23,7 @@ async function validateNewUser() {
 
     //Sends POST request to server
     const res = await fetch('http://localhost:3000/users/' + email, {
-        method: 'PUT',
+        method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'

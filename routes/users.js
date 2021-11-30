@@ -27,7 +27,16 @@ router.get('/:email', function(req, res) {
 
 // PUT request that creats or edits specific user or returns 404 if user schema is wrong
 router.put('/:email', function(req, res, next) {
-    User.findOneAndUpdate({email: req.params['email']}, req.body, function (err, user) {
+    User.create(req.body, function(err, newUser){
+      if(err){
+        console.log(err)
+        res.status(400).send();
+      }
+      else{
+        res.status(201).send();
+      }
+    });
+    /*User.findOneAndUpdate({email: req.params['email']}, req.body, function (err, user) {
       if (!err) {
         // If the document doesn't exist
         if (!user) {
@@ -45,7 +54,7 @@ router.put('/:email', function(req, res, next) {
           });
         }
       }
-    });
+    }); */
     res.send();
   
 });
