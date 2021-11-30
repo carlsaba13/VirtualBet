@@ -3,27 +3,25 @@
 
 ## Due Tuesday, OCT 19, 2021
 
-### Build a web app in a team of 5-6
+### Team: Jack Miller (Fullstack, PM), Yusef Abaza (Backend), Spencer Lander (Backend), Ryan Colflesh (Frontend), Carl Saba (Frontend)
 
 ### Requirements:
-* Must have user accounts and different user roles
-* Must use a database
-* Must have interactive UI
-* Must use a library or framework not discussed/used in class
-* Must use an outside REST API in some way
-* Must deploy your application in some publicly accessible way (Heroku, Digital Ocean, AWS, etc)
+* User Roles: Bettor, Bookie
+* Accounts: email, password, role, balance
+* MongoDB
+* Sportsdataverse
+* ESPN
+* Heroku
 
 ### Instructions
-Build your team and write a document describing your application to me by Tuesday, OCT 19, 2021. I will approve your web application idea. In your paper, include:
-* the name of your application
-* name and roles of all your team members
-* its functionality
-* user story/use case
-* technical design 
-* tools/libraries/frameworks you will use
+Link to Application: https://virtual-bet.herokuapp.com/
+* First time users should create a new account by inputting their email and password and clicking the "Create New User" button
+* Repeat users should sign in with their email and password
+* New Users are assigned the Bettor role by default (the Bookie role is already assigned)
+* Upon login, users will be taken to their profile page where they can see statistics on their bet history
+* Bettors can also go to the bets page, where they can place bets on the current week's games
 
-### Final deliverable:
-* Codebase in Github Repo
-* README describing your project, with all of the information outlined above (team members, application name, description, etc). You will also include detailed instructions of how to install and run your application, and what API keys, databases, etc are needed to run your application. You will also provide a link to a live demo of your application.
-* Final Presentation and Demo
-  * You will prepare a 5 minute presentation and demo of your application in class during during a zoom call with me (during finals week)
+### Installation Instructions
+* Clone the GitHub Repository
+* In the terminal, type "npm install"
+* To run, type "npm run start" in the terminal
