@@ -3,8 +3,9 @@ async function validateSignIn() {
     const password = document.getElementById('pass').value;
 
     let user = await fetch('http://localhost:3000/users/' + email);
-    //user = await user.json();
-    //user = user.body;
+    user = await user.json();
+
+    document.cookie = "email=" + user.email;
 
     console.log(user);
 
@@ -14,15 +15,15 @@ async function validateNewUser() {
     const email = document.getElementById('email').value;
     const pass = document.getElementById('pass').value;
 
-    const user = {
+    const user = JSON.stringify({
         email: email,
         bookie: false,
         password: pass,
         balance: 100
-    }
+    });
 
     //Sends POST request to server
-    const res = await fetch('http://localhost:3000/users/', {
+    const res = await fetch('http://localhost:3000/users', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -31,5 +32,5 @@ async function validateNewUser() {
         body: user
     });
 
-    //const content = await res.json();
+    const content = await res.json();
 }
