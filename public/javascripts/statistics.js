@@ -1,6 +1,6 @@
 async function addStatistics() {
     //Add total number of users
-    let users = await fetch('http://localhost:3000/users/');
+    let users = await fetch('/users/');
     users = await users.json()
     users = users.body;
 
@@ -29,7 +29,7 @@ async function init(){
     }
 
     console.log(cookie);
-    let user = await fetch('http://localhost:3000/users/' + cookie[1]);
+    let user = await fetch('/users/' + cookie[1]);
     user = await user.json();
 
     if(user.bookie === 0) {
