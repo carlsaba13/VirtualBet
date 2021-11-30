@@ -1,18 +1,18 @@
 var express = require('express');
 var router = express.Router();
-const User = require('../models/User.js');
+const User = require('../models/Users.js');
 
 //https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
-String.prototype.hashCode = function() {
-  var hash = 0, i, chr;
-  if (this.length === 0) return hash;
-  for (i = 0; i < this.length; i++) {
-    chr   = this.charCodeAt(i);
-    hash  = ((hash << 5) - hash) + chr;
-    hash |= 0; // Convert to 32bit integer
-  }
-  return hash;
-};
+// String.prototype.hashCode = function() {
+//   var hash = 0, i, chr;
+//   if (this.length === 0) return hash;
+//   for (i = 0; i < this.length; i++) {
+//     chr   = this.charCodeAt(i);
+//     hash  = ((hash << 5) - hash) + chr;
+//     hash |= 0; // Convert to 32bit integer
+//   }
+//   return hash;
+// };
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -25,38 +25,25 @@ router.get('/:email', function(req, res) {
   });
 });
 
-// PUT request that creats or edits specific user or returns 404 if user schema is wrong
-router.put('/:email', function(req, res, next) {
-    User.create(req.body, function(err, newUser){
-      if(err){
-        console.log(err)
-        res.status(400).send();
-      }
-      else{
-        res.status(201).send();
-      }
-    });
-    /*User.findOneAndUpdate({email: req.params['email']}, req.body, function (err, user) {
-      if (!err) {
-        // If the document doesn't exist
-        if (!user) {
-          // Create it
-          // Save the document
-          User.create(req.body, function(err, newUser){
-            if(err){
-              console.log(err)
-              res.status(400).send();
-            }
-            else{
-              document.cookie = "Login =" + true + ":" + "Username =" + newUser.Email
-              res.status(201).send();
-            }
-          });
-        }
-      }
-    }); */
-    res.send();
-  
+/* POST URL Path /bets/. */
+router.post('/', function(req, res, next) {
+  // THIS IS WHAT THE REQUEST BODY NEEDS TO LOOK LIKE
+  var user = {
+    email: "email",
+    bookie: false,
+    password: "pass",
+    balance: 100
+  }
+  // Add object to database
+  User.create(req.body, function(err, newBet){
+  if(err){
+      console.log(err)
+      res.status(400).send();
+  }
+  else{
+      res.status(201).send();
+  }
+  });
 });
 
 
