@@ -3,16 +3,16 @@ var router = express.Router();
 const User = require('../models/Users.js');
 
 //https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
-// String.prototype.hashCode = function() {
-//   var hash = 0, i, chr;
-//   if (this.length === 0) return hash;
-//   for (i = 0; i < this.length; i++) {
-//     chr   = this.charCodeAt(i);
-//     hash  = ((hash << 5) - hash) + chr;
-//     hash |= 0; // Convert to 32bit integer
-//   }
-//   return hash;
-// };
+String.prototype.hashCode = function() {
+  var hash = 0, i, chr;
+  if (this.length === 0) return hash;
+  for (i = 0; i < this.length; i++) {
+    chr   = this.charCodeAt(i);
+    hash  = ((hash << 5) - hash) + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return hash;
+};
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -34,6 +34,7 @@ router.post('/', function(req, res, next) {
     password: "pass",
     balance: 100
   }
+  req.body.password = hashcode(req.body.Password)
   // Add object to database
   User.create(req.body, function(err, newBet){
   if(err){

@@ -110,13 +110,21 @@ body {
 #personalInfo, #moneyInfo {
   margin: 40px;
   border: 2px outset grey;
+  background-color: aqua;
 }
 
 #deposit {
-  margin-left: 43%;
-  margin-right: 53%;
-  display: inline-block;
-  justify-content: center;
+  height: 50px;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 #depositButton {
@@ -124,9 +132,7 @@ body {
   border: none;
   color: white;
   padding: 15px 32px;
-  text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
 }
 
@@ -177,8 +183,7 @@ body {
 }
 
 #history {
-  margin-left: 42%;
-  margin-right: 48%;
+  text-align: center;
 }
 
 #depositForm, #depositSubmit {
