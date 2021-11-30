@@ -1,5 +1,5 @@
 //https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
-String.prototype.hashCode = function() {
+/*String.prototype.hashCode = function() {
     var hash = 0, i, chr;
     if (this.length === 0) return hash;
     for (i = 0; i < this.length; i++) {
@@ -8,7 +8,7 @@ String.prototype.hashCode = function() {
       hash |= 0; // Convert to 32bit integer
     }
     return hash;
-  };
+  }; */
 
 async function validateSignIn() {
     const email = document.getElementById('email').value;
@@ -17,7 +17,8 @@ async function validateSignIn() {
     let user = await fetch('http://localhost:3000/users/' + email);
     user = await user.json();
 
-    if(user.password === hashCode(password)) {
+    //if(user.password === hashCode(password)) {
+    if(user.password === password) {
         document.cookie = "email=" + user.email;
         if(user.bookie)
             window.location.replace("http://localhost:3000/statistics");
@@ -43,7 +44,7 @@ async function validateNewUser() {
     });
 
     //Sends POST request to server
-    const res = await fetch('http://localhost:3000/users', {
+    let res = await fetch('http://localhost:3000/users', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -52,5 +53,7 @@ async function validateNewUser() {
         body: user
     });
 
-    const content = await res.json();
+    //res = await res.json();
+
+    console.log(res.body);
 }
