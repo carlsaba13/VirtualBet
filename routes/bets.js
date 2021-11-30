@@ -13,21 +13,21 @@ router.get('/:user_id', function(req, res) {
             let result = await upcomingGames(bets[i]["week"],res);
             for(var j in result){
                 if(bets[i]["gameID"] == result[j]["id"]){
-                    if(bets[i]["competitor1"] == true && result[j]["competitors"][0]["win"] == true){
+                    if(bets[i]["competitor1"] == true && result[j]["competitors"][0]["win"] == true){ // && bets[i]["victory"] == null
                         bets[i]["victory"] = true;
                         bets[i].save();
                         // Edit balance
                     }
-                    else if(bets[i]["competitor1"] == false && result[j]["competitors"][0]["win"] == false){
+                    else if(bets[i]["competitor1"] == false && result[j]["competitors"][0]["win"] == false){ // && bets[i]["victory"] == null
                         bets[i]["victory"] = true;
                         bets[i].save();
                         // Edit balance
                     }
-                    else if(bets[i]["competitor1"] == true && result[j]["competitors"][0]["win"] == false){
+                    else if(bets[i]["competitor1"] == true && result[j]["competitors"][0]["win"] == false){ // && bets[i]["victory"] == null
                         bets[i]["victory"] = false;
                         bets[i].save();
                     }
-                    else if(bets[i]["competitor1"] == false && result[j]["competitors"][0]["win"] == true){
+                    else if(bets[i]["competitor1"] == false && result[j]["competitors"][0]["win"] == true){ // && bets[i]["victory"] == null
                         bets[i]["victory"] = false;
                         bets[i].save();
                     }
