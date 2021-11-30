@@ -1,9 +1,8 @@
 async function addStatistics() {
+    //Add total number of users
     let users = await fetch('http://localhost:3000/users/');
     users = await users.json()
     users = users.body;
-
-    console.log(users);
 
     const totalUsersDiv = document.getElementById('total-users');
 
@@ -11,4 +10,10 @@ async function addStatistics() {
     totalUsersText.innerHTML = users.length;
 
     totalUsersDiv.append(totalUsersText);
+
+    //Add total number of bets
+    let bets = []
+    
+
+
 }
