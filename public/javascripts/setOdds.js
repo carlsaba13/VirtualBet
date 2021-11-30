@@ -17,7 +17,7 @@ async function validate() {
 
     //Gets week value selected by user and fetches all games' info for that week
     const weekSelected = document.getElementById('select-week').value;
-    const getURL = 'http://localhost:3000/games/' + weekSelected;
+    const getURL = '/games/' + weekSelected;
     let gamesData = await fetch(getURL);
     gamesData = await gamesData.json();
 
@@ -52,7 +52,7 @@ async function validate() {
         gameInfoDiv.appendChild(gameDateDiv);
 
         //Checks if odds have been already set for the game
-        let oddsExist = await fetch('http://localhost:3000/odds/' + game.id);
+        let oddsExist = await fetch('/odds/' + game.id);
         oddsExist = await oddsExist.text();
         console.log(oddsExist);
         
@@ -137,7 +137,7 @@ async function postOdds(gameID, homeInputID, awayInputID) {
     console.log(parseInt(document.getElementById(awayInputID).value));
     
     //Sends POST request to server
-    const res = await fetch('http://localhost:3000/odds/', {
+    const res = await fetch('/odds/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -162,7 +162,7 @@ async function init(){
     }
 
     console.log(cookie);
-    let user = await fetch('http://localhost:3000/users/' + cookie[1]);
+    let user = await fetch('/users/' + cookie[1]);
     user = await user.json();
 
     if(user.bookie === 1) {
