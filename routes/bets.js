@@ -7,7 +7,7 @@ const Bet = require('../models/Bets.js');
 
 /* GET a users bets. This is also where it checks if your bet was right or wrong */
 router.get('/:user_id', function(req, res) {
-    Bet.find({userID: req.params['user_id']}, async function (err, bets){
+    Bet.find({email: req.params['user_id']}, async function (err, bets){
         // Check for win or loss
         for(var i in bets){
             let result = await upcomingGames(bets[i]["week"],res);
