@@ -40,23 +40,27 @@ router.get('/:user_id', function(req, res) {
 
 /* POST URL Path /bets/. */
 router.post('/', function(req, res, next) {
+    console.log('Here');
     // THIS IS WHAT THE REQUEST BODY NEEDS TO LOOK LIKE
     var sampleBet = {
         email: "user@example.com",
-        game_id: 34,
+        gameID: 34,
         week: 12,
-        home: True,
+        home: true,
         odds: -150,
         amount: 300,
         victory: null
     };
     // Add object to database
+    console.log(req.body);
     Bet.create(req.body, function(err, newBet){
     if(err){
         console.log(err)
         res.status(400).send();
     }
     else{
+        console.log(req.body);
+        console.log(newBet);
         res.status(201).send();
     }
     });
