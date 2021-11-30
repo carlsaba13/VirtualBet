@@ -201,3 +201,19 @@ body {
 #depositSubmit {
   background-color: green;
 }
+
+.card {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  width: 30%;
+  height: 50%;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.index-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

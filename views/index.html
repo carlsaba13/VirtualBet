@@ -3,19 +3,17 @@
 <html>
   <link type="text/css" href="stylesheets/style.css" rel="stylesheet">
   <script type="text/javascript" src="javascripts/authenticate.js" async></script>
-<body>
-  <div id="myModal" class="modal">
+<body class="index-body">
     <!-- Modal content -->
-    <div class="modalContent">
+    <div class="card">
+      <h1>Welcome to Bet264.</h1>
       <form onsubmit="event.preventDefault();">
         <label for="email">Email:</label>
         <input type="text" id="email" name="email"><br><br>
         <label for="pass">Password:</label>
-        <input type="text" id="pass" name="pass"><br><br>
+        <input type="password" id="pass" name="pass"><br><br>
         <input id="sign-in-button" type="button" name="Sign In" value="Sign In" onclick="validateSignIn();"/>
         <input id="new-user-button" type="button" name="Create New User" value="Create New User" onclick="validateNewUser();"/>
       </form>
-      
-  </div>
 </body>
 </html>
