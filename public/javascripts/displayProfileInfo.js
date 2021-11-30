@@ -4,9 +4,6 @@ function setEmail(email) {
 function setName(name) {
     document.getElementById("name").innerHTML = name;
 }
-function setAge(age) {
-    document.getElementById("age").innerHTML = age + " years";
-}
 function setBalance(balance) {
     document.getElementById("balance").innerHTML = "$" + balance;
 }
@@ -23,7 +20,6 @@ function setNumberBets(nBets) {
 setTimeout(() => {
     setEmail("yoMAMA");
     setName("Carl Saba");
-    setAge(17);
     setBalance(4300);
     setTotalDeposited(55000);
     setTotalWinnings(33000);
