@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const Bet = require('../models/Users.js');
 
 //https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
 String.prototype.hashCode = function() {
