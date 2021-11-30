@@ -61,10 +61,11 @@ async function validate() {
             const setML = document.createElement('button');
             setML.innerHTML = "Set Odds";
             setML.className = 'set-odds-button';
+            setML.id = 'set-odds-button-' + game.id;
             
             const setOddsFormID = 'set-odds-form-game-' + game.id;
             setML.onclick = function() {
-                loadSetOddsButtonInput(gameInfoDiv, setOddsFormID, game.id);
+                loadSetOddsButtonInput(gameInfoDiv, setOddsFormID, game.id, setML.id);
             };
             gameInfoDiv.appendChild(setML);
         }
@@ -75,7 +76,7 @@ async function validate() {
 }
 
 //Inserts a form to post odds for specified game into the DOM
-function loadSetOddsButtonInput(div, setOddsFormID, gameID) {
+function loadSetOddsButtonInput(div, setOddsFormID, gameID, setMLID) {
     
     //If the form is not currently on the DOM, create it and add it to the DOM
     if(document.getElementById(setOddsFormID) === null) {
@@ -105,12 +106,15 @@ function loadSetOddsButtonInput(div, setOddsFormID, gameID) {
         submit.className = 'set-odds-input-form-button';
 
         submit.onclick = function() {
-            postOdds(gameID, homeInput.id, awayInput.id);
+            postOdds(gameID, homeInput.id, awayInput.id, setOddsFormID, setMLID);
+            document.getElementById(setOddsFormID).remove();
+            document.getElementById(setMLID).remove();
+            alert("Odds set!");
         };
         
         //Append input and submit button to the form element and append form element to the game's info div
-        form.appendChild(homeInput);
         form.appendChild(awayInput);
+        form.appendChild(homeInput);
         form.appendChild(submit);
         div.appendChild(form);
 
@@ -123,7 +127,7 @@ function loadSetOddsButtonInput(div, setOddsFormID, gameID) {
 }
 
 //Sends POST request with inputted odds for specific game ID
-async function postOdds(gameID, homeInputID, awayInputID) {
+async function postOdds(gameID, homeInputID, awayInputID, formID, setMLID) {
     //Creates JSON request body
     const odds = JSON.stringify({
         gameID: gameID,
@@ -147,7 +151,10 @@ async function postOdds(gameID, homeInputID, awayInputID) {
       });
       const content = await res.json();
     
-      console.log(content);
+    document.getElementById(formID).remove();
+    document.getElementById(setMLID).remove();
+
+    console.log(content);
 }
 
 //Loads validate function onto week form
