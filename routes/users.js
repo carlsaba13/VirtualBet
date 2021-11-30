@@ -34,11 +34,7 @@ router.post('/', function(req, res, next) {
     password: hashCode(req.body.password),
     balance: 100
   }
-<<<<<<< HEAD
   req.body.password = req.body.Password;
-=======
-  
->>>>>>> b64901cb72e309e5c01f64073905c61316fb1c6d
   // Add object to database
   User.create(user, function(err, newBet){
   if(err){
