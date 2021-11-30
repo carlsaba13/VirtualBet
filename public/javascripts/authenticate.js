@@ -5,7 +5,10 @@ async function validateSignIn() {
     let user = await fetch('http://localhost:3000/users/' + email);
     user = await user.json();
 
-    document.cookie = "email=" + user.email;
+    if(user.password === password)
+        document.cookie = "email=" + user.email;
+    else
+        alert("Incorrect username or password.");
 
     console.log(user);
 
