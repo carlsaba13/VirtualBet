@@ -41,7 +41,6 @@ function validateWeek(){
     })
     .then(week => {
         getGames(week);
-        document.getElementById('week-form').remove();
     });
     
 }
@@ -138,9 +137,6 @@ function betForm(odds1, odds2) {
             } else {
                 o = odds1;
             }
-            console.log(o);
-            console.log(i.value);
-            alert("Bet on ".concat(gameBetOn, " and ", teamBetOn, " and ", i.value));
             const myInit =    
                 {
                 email: email,
@@ -159,7 +155,14 @@ function betForm(odds1, odds2) {
                 'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(myInit)
-            }).then(res => console.log(res));
+            }).then(res => {
+                if (res.status == 201) {
+                    alert("Bet $" + i.value + " on the " + teamBetOn);
+                    location.reload();
+                } else {
+                    alert(res.status);
+                }
+            });
         }
     });
     s.type = "submit";
