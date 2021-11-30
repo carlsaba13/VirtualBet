@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const upcomingGames = require('./espn.js');
 const Bet = require('../models/Bets.js');
+const User = require('../models/Users.js');
 
 
 
@@ -13,15 +14,39 @@ router.get('/:user_id', function(req, res) {
             let result = await upcomingGames(bets[i]["week"],res);
             for(var j in result){
                 if(bets[i]["gameID"] == result[j]["id"]){
-                    if(bets[i]["competitor1"] == true && result[j]["competitors"][0]["win"] == true){ // && bets[i]["victory"] == null
+                    if(bets[i]["competitor1"] == true && result[j]["competitors"][0]["win"] == true && bets[i]["victory"] == null){ // && bets[i]["victory"] == null
                         bets[i]["victory"] = true;
                         bets[i].save();
                         // Edit balance
+                        User.findOne({email: req.params['email']}, async function (err, user){
+                            var o = bets[i]["odds"];
+                            var a = bets[i]["amount"];
+                            if(o < 0){
+                                o *= -1;
+                                user["balance"] += ((o+100)/o)*a;
+                            }
+                            else{
+                                user["balance"] += ((o+100)/100)*a;
+                            }
+                            user.save();
+                        });
                     }
-                    else if(bets[i]["competitor1"] == false && result[j]["competitors"][0]["win"] == false){ // && bets[i]["victory"] == null
+                    else if(bets[i]["competitor1"] == false && result[j]["competitors"][0]["win"] == false && bets[i]["victory"] == null){ // && bets[i]["victory"] == null
                         bets[i]["victory"] = true;
                         bets[i].save();
                         // Edit balance
+                        User.findOne({email: req.params['email']}, async function (err, user){
+                            var o = bets[i]["odds"];
+                            var a = bets[i]["amount"];
+                            if(o < 0){
+                                o *= -1;
+                                user["balance"] += ((o+100)/o)*a;
+                            }
+                            else{
+                                user["balance"] += ((o+100)/100)*a;
+                            }
+                            user.save();
+                        });
                     }
                     else if(bets[i]["competitor1"] == true && result[j]["competitors"][0]["win"] == false){ // && bets[i]["victory"] == null
                         bets[i]["victory"] = false;
@@ -57,6 +82,10 @@ router.post('/', function(req, res, next) {
         res.status(400).send();
     }
     else{
+        User.findOne({email: req.body['email']}, async function (err, user){
+            user["balance"] -= req.body['amount'];
+            user.save();
+        });
         res.status(201).send();
     }
     });

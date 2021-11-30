@@ -46,6 +46,21 @@ router.post('/', function(req, res, next) {
   });
 });
 
+router.post('/:email', function(req, res, next) {
+  // Add object to database
+  User.findOne({email: req.params['email']}, function(err, user){
+  if(err){
+      console.log(err)
+      res.status(400).send();
+  }
+  else{
+      user['balance'] += req.body['deposit'];
+      user.save();
+      res.status(201).send();
+  }
+  });
+});
+
 
 
 module.exports = router;
