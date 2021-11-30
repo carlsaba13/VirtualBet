@@ -2,13 +2,16 @@
 <!-- Carl Saba -->
 <html>
     <link type="text/css" href="stylesheets/style.css" rel="stylesheet">
-    <script type="text/javascript" src="javascripts/displayBets.js"></script>
-    <script type="text/javascript" src="javascripts/setOdds.js" async></script>
+    <script type="text/javascript" src="javascripts/displayBets.js" async></script>
 <body>
     <div class="topnav">
         <a class="active" href="/"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/1200px-National_Football_League_logo.svg.png"></a>
         <a href="/profile">Profile</a>
         <a href="/betsAvailable">Bets</a>
+        <div class="topnav-right">
+            <a id="displayBalance"></a>
+        </div>
+        
     </div>
     <div class="body" id="set-odds-body">
         <form id="week-form" onsubmit="event.preventDefault(); validateWeek();">

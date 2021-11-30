@@ -1,3 +1,21 @@
+window.onload = init;
+var balance = null;
+var email = null;
+
+async function init() {
+    let balanceDisplay = document.getElementById("displayBalance");
+    const cookie = document.cookie.split('=');
+    email = cookie[0];
+    console.log(cookie);
+    fetch("/users/".concat(email))
+    .then(res => res.json())
+    .then(data => {
+        balance = data["balance"];
+        balanceDisplay.innerHTML = "Balance: $" + data["balance"];
+        console.log(data);
+    });
+}
+
 function setEmail(email) {
     document.getElementById("email").innerHTML = email;
 }
@@ -18,9 +36,9 @@ function setNumberBets(nBets) {
 }
 
 setTimeout(() => {
-    setEmail("yoMAMA");
+    setEmail(email);
     setName("Carl Saba");
-    setBalance(4300);
+    setBalance(balance);
     setTotalDeposited(55000);
     setTotalWinnings(33000);
     setNumberBets(6921);
