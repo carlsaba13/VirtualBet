@@ -51,6 +51,10 @@ router.get('/betsAvailable', function(req, res, next) {
    res.render('bets', { title: 'Express' });
 });
 
+router.get('/deposit', function(req, res, next) {
+  res.render('deposit', { title: 'Express' });
+});
+
 router.get('/setOdds', function(req, res, next) {
   res.render('setOdds', { title: 'Express' });
 });
