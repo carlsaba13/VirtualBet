@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const Bet = require('../models/Users.js');
+const User = require('../models/Users.js');
 
 //https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
 String.prototype.hashCode = function() {
@@ -20,22 +20,21 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:email', function(req, res) {
-  Odd.findOne({email: req.params['email'],password: req.params['password']}, function (err, user){
+  User.findOne({email: req.params['email']}, function (err, user){
       res.send(user);
   });
 });
 
 // PUT request that creats or edits specific user or returns 404 if user schema is wrong
 router.put('/:email', function(req, res, next) {
-  
-    Film.findOneAndUpdate({email: req.params['email']}, req.body, function (err, user) {
+  if(checkSchema(req.body) == true){
+    User.findOneAndUpdate({email: req.params['email']}, req.body, function (err, user) {
       if (!err) {
         // If the document doesn't exist
         if (!user) {
           // Create it
           // Save the document
-         
-          Film.create(req.body, function(err, newUser){
+          User.create(req.body, function(err, newUser){
             if(err){
               console.log(err)
               res.status(400).send();
