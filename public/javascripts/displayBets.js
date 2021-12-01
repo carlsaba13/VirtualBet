@@ -146,7 +146,7 @@ function betForm(odds1, odds2) {
     let l = document.createElement("label");
     let i = document.createElement("input");
     let s = document.createElement("input");
-    l.innerHTML = '<label for="amount">Bet Amount:</label>';
+    l.innerHTML = '<label for="amount">Bet Amount: </label>';
     i.type = "number";
     i.min = 1;
     i.max = balance;
