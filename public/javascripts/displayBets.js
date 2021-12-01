@@ -159,7 +159,7 @@ function betForm(odds1, odds2) {
                 victory: null
                 };
             console.log(myInit);
-            fetch('http://localhost:3000/bets', {
+            fetch('/bets', {
                 method: 'POST',
                 headers: {
                 'Accept': 'application/json',
