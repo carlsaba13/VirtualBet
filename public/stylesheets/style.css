@@ -101,6 +101,17 @@ body {
   margin-bottom: 20px;
 }
 
+.button:hover {
+  margin-top: 5px;
+  transition-duration: 0.4s;
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+#betOffer th {
+  height: 50px;
+}
+
 #betOffer, #betOffer th, #betOffer td, #oldBets, #oldBets th, #oldBets td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -249,7 +260,7 @@ body {
 #depositForm, #depositSubmit {
   width: 100%;
   font-size: 16px;
-  margin: 10px;
+  margin-top: 10px;
   padding: 12px 20px 12px 40px;
 }
 
@@ -354,7 +365,7 @@ th {
 }
 
 .button {
-  margin: 5px;
+  margin: 10px;
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;

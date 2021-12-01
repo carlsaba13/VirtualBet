@@ -84,11 +84,23 @@ function makeMoneyLine(team1, team2, line1, line2, gameID) {
     console.log(gameID);
     let table = document.createElement("table");
     table.className = "table";
+    table.style.border = "none";
     let teams = table.insertRow("0");
-    teams.outerHTML = "<th>" + team1 + "</th><th>" + team2 + "</th>";
+    let th1 = document.createElement("th");
+    let th2 = document.createElement("th");
+    th1.innerHTML = team1;
+    th2.innerHTML = team2;
+    th1.style.border = "none";
+    th2.style.border = "none";
+    teams.appendChild(th1);
+    teams.appendChild(th2);
+    //teams.outerHTML = "<th>" + team1 + "</th><th>" + team2 + "</th>";
+    teams.style.border = "none";
     let moneyLine = table.insertRow("1");
     let moneyLine1 = moneyLine.insertCell("0");
     let moneyLine2 = moneyLine.insertCell("1");
+    moneyLine1.style.border = "none";
+    moneyLine2.style.border = "none";
     if (line1 > 0) {
         button1 = makeButton("+" + line1, team1, gameID, false);
     } else {
@@ -105,6 +117,8 @@ function makeMoneyLine(team1, team2, line1, line2, gameID) {
     td1.appendChild(button1);
     let td2 = document.createElement("td");
     td2.appendChild(button2);
+    td1.style.border = "none";
+    td2.style.border = "none";
     moneyLine1.appendChild(td1);
     moneyLine2.appendChild(td2);
     return table;
@@ -132,7 +146,7 @@ function betForm(odds1, odds2) {
     let l = document.createElement("label");
     let i = document.createElement("input");
     let s = document.createElement("input");
-    l.innerHTML = '<label for="amount">Bet Amount:</label>';
+    l.innerHTML = '<label for="amount">Bet Amount: </label>';
     i.type = "number";
     i.min = 1;
     i.max = balance;
