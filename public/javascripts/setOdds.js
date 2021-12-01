@@ -30,6 +30,8 @@ async function validate() {
     const setOddsBody = document.getElementById('set-odds-body');
     gamesData.forEach(async function (game) {
 
+        const container = document.createElement('div');
+
         //Creates game info container
         const gameInfoDiv = document.createElement('div');
         gameInfoDiv.className = 'game';
@@ -58,6 +60,7 @@ async function validate() {
         
         //If odds haven't been set, create a new button to set odds and append it to the game info container
         if(oddsExist.length === 0) {
+            const setMLDiv = document.createElement('div');
             const setML = document.createElement('button');
             setML.innerHTML = "Set Odds";
             setML.className = 'set-odds-button';
@@ -65,18 +68,19 @@ async function validate() {
             
             const setOddsFormID = 'set-odds-form-game-' + game.id;
             setML.onclick = function() {
-                loadSetOddsButtonInput(gameInfoDiv, setOddsFormID, game.id, setML.id);
+                loadSetOddsButtonInput(container, gameInfoDiv, setOddsFormID, game.id, setML.id);
             };
             gameInfoDiv.appendChild(setML);
         }
 
         //Appends entire game info container onto setOdds page
-        setOddsBody.appendChild(gameInfoDiv);
+        container.appendChild(gameInfoDiv);
+        setOddsBody.appendChild(container);
     });
 }
 
 //Inserts a form to post odds for specified game into the DOM
-function loadSetOddsButtonInput(div, setOddsFormID, gameID, setMLID) {
+function loadSetOddsButtonInput(container, div, setOddsFormID, gameID, setMLID) {
     
     //If the form is not currently on the DOM, create it and add it to the DOM
     if(document.getElementById(setOddsFormID) === null) {
@@ -116,7 +120,7 @@ function loadSetOddsButtonInput(div, setOddsFormID, gameID, setMLID) {
         form.appendChild(awayInput);
         form.appendChild(homeInput);
         form.appendChild(submit);
-        div.appendChild(form);
+        container.appendChild(form);
 
     //Else, remove the already existing form from the DOM
     } else {

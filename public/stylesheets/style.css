@@ -40,6 +40,7 @@ body {
 }
 
 .topnav {
+  font-family: 'Outfit';
   overflow: hidden;
   background-color: #333;
   width: 100%;
@@ -173,22 +174,43 @@ body {
 .game {
   display: flex;
   margin-top: 30px;
+  margin-left: 4%;
+  margin-right: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
 }
 
 .set-odds-game-name, .set-odds-game-date {
   width: 120px;
-  border:1px solid #333;
+  border-right: 1px solid #333;
   text-align: center;
+  align-items: center;
 }
 
 .set-odds-input-form-button, .set-odds-button {
   background-color:#4CAF50;
   color:white;
   border: #4CAF50;
-  margin-right: 10px;
 }
 
+.set-odds-input-form {
+  margin-left: 4%;
+}
+
+
 #submit-week-button {
+  font-family: 'Outfit';
+  font-size: 20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+
+#submit-week-button-new {
   font-family: 'Outfit';
   font-size: 20px;
   background-color: #4CAF50;
@@ -200,8 +222,8 @@ body {
   transition: 0.3s;
 }
 
-.set-odds-input-form-button:hover, .set-odds-button:hover, #submit-week-button:hover {
-  background-color: darkgreen;
+#submit-week-button:hover {
+  background-color: #97e69b;
 }
 
 #select-week, #select-week1 {
@@ -244,6 +266,7 @@ body {
   border-radius: 10px;
   padding-left: 5%;
   padding-right: 5%;
+  margin-top: 10%;
 }
 
 #welcome {
@@ -310,9 +333,9 @@ body {
   transition: 0.3s;
 }
 
-#sign-in-button:hover, #new-user-button:hover, #submit-week-button:hover {
+#sign-in-button:hover, #new-user-button:hover {
   background-color: #97e69b;
-  margin-left: 95%; /* 25%? */
+  /* 25%? */
   /* margin-bottom: 20%; */
 }
 
