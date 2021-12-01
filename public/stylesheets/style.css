@@ -90,6 +90,7 @@ body {
 
 #betOffer, #oldBets {
   margin-top: 20px;
+  position: relative;
 }
 
 #betOffer, #betOffer th, #betOffer td, #oldBets, #oldBets th, #oldBets td {
@@ -239,6 +240,8 @@ body {
   height: 30%;
   text-align: center;
   border-radius: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 #welcome {
@@ -292,7 +295,7 @@ body {
 #sign-in-button, #new-user-button {
   display: table-cell;
   margin-left: 100%;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
   border: none;
   border-radius: 5px;
   width: 100%;
@@ -307,6 +310,8 @@ body {
 
 #sign-in-button:hover, #new-user-button:hover, #submit-week-button:hover {
   background-color: #97e69b;
+  margin-left: 95%; /* 25%? */
+  /* margin-bottom: 20%; */
 }
 
 .button {

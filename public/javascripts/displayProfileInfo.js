@@ -72,8 +72,8 @@ function showPastBets(week) {
             let gameID = game["id"];
             console.log(gameID);
             let competitors = game["competitors"];
-            let team1 = competitors["0"]["name"];
-            let team2 = competitors["1"]["name"];
+            let team1 = competitors["1"]["name"];
+            let team2 = competitors["0"]["name"];
             fetch('/bets/'.concat(email))
             .then(res => res.json())
             .then(betData => {

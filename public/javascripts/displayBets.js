@@ -58,8 +58,8 @@ function getGames(week) {
             let gameID = game["id"];
             console.log(gameID);
             let competitors = game["competitors"];
-            let team1 = competitors["0"]["name"];
-            let team2 = competitors["1"]["name"];
+            let team1 = competitors["1"]["name"];
+            let team2 = competitors["0"]["name"];
             fetch('/odds/'.concat(gameID))
             .then(res => {
                 if (!res) {
@@ -70,8 +70,8 @@ function getGames(week) {
                 }
             })
             .then(data => {
-                let homeOdds = data["home"];
-                let awayOdds = data["away"];
+                let homeOdds = data["away"];
+                let awayOdds = data["home"];
                 makeNewBet(date, team1, team2, time, awayOdds, homeOdds, gameID);
             }).catch(error => console.log(error));    
             
@@ -159,7 +159,7 @@ function betForm(odds1, odds2) {
                 victory: null
                 };
             console.log(myInit);
-            fetch('http://localhost:3000/bets', {
+            fetch('/bets', {
                 method: 'POST',
                 headers: {
                 'Accept': 'application/json',

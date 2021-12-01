@@ -25,7 +25,7 @@ async function init() {
             const myInit = {
                 deposit: parseInt(i.value)
             };
-            fetch('http://localhost:3000/users/'.concat(email), {
+            fetch('/users/'.concat(email), {
                 method: 'POST',
                 headers: {
                 'Accept': 'application/json',
@@ -35,7 +35,7 @@ async function init() {
             }).then(res => {
                 if (res.status == 201) {
                     alert("Successfully deposited $" + i.value)
-                    location.reload();
+                    window.location.replace("/profile");
                 } else {
                     alert(res.status);
                 }

@@ -26,10 +26,10 @@ router.get('/:user_id', function(req, res) {
                             var a = bets[i]["amount"];
                             if(o < 0){
                                 o *= -1;
-                                user["balance"] += ((o+100)/o)*a;
+                                user["balance"] += Math.ceil(((o+100)/o)*a);
                             }
                             else{
-                                user["balance"] += ((o+100)/100)*a;
+                                user["balance"] += Math.ceil(((o+100)/100)*a);
                             }
                             user.save();
                         });
@@ -46,10 +46,10 @@ router.get('/:user_id', function(req, res) {
                             var a = bets[i]["amount"];
                             if(o < 0){
                                 o *= -1;
-                                user["balance"] += ((o+100)/o)*a;
+                                user["balance"] += Math.ceil(((o+100)/o)*a);
                             }
                             else{
-                                user["balance"] += ((o+100)/100)*a;
+                                user["balance"] += Math.ceil(((o+100)/100)*a);
                             }
                             user.save();
                         });
