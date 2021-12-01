@@ -1,7 +1,8 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #FBEEC1;
+  background-color: white;
+  margin: 0;
+  padding: 0;
 }
 
 .modal {
@@ -41,6 +42,9 @@ body {
 .topnav {
   overflow: hidden;
   background-color: #333;
+  width: 100%;
+  margin-left: 0px;
+  box-shadow: 0 10px 10px -10px rgba(0,0,0,.2);
 }
 
 .topnav-right {
@@ -48,12 +52,16 @@ body {
 }
 
 .topnav a {
+  font-family: 'Outfit';
   float: left;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 24px;
   text-decoration: none;
   font-size: 17px;
+  transition: top ease 0.5s;
+  position: relative;
+  top: 0;
 }
 
 .topnav img {
@@ -62,12 +70,10 @@ body {
 }
 
 .topnav a:hover {
-  background-color: #ddd;
-  color: black;
+  top: -7px;
 }
 
 .topnav a.active {
-  background-color: #04AA6D;
   color: white;
 }
 
@@ -172,11 +178,23 @@ body {
   text-align: center;
 }
 
-.set-odds-input-form-button, .set-odds-button, #submit-week-button {
+.set-odds-input-form-button, .set-odds-button {
   background-color:#4CAF50;
   color:white;
   border: #4CAF50;
   margin-right: 10px;
+}
+
+#submit-week-button {
+  font-family: 'Outfit';
+  font-size: 20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  transition: 0.3s;
 }
 
 .set-odds-input-form-button:hover, .set-odds-button:hover, #submit-week-button:hover {
@@ -185,6 +203,8 @@ body {
 
 #select-week, #select-week1 {
   margin-top: 20px;
+  font-family: 'Outfit';
+  font-size: 20px;
 }
 
 #history {
@@ -285,10 +305,8 @@ body {
   transition: 0.3s;
 }
 
-#sign-in-button:hover, #new-user-button:hover {
+#sign-in-button:hover, #new-user-button:hover, #submit-week-button:hover {
   background-color: #97e69b;
-  margin-left: 25%;
-  margin-bottom: 20%;
 }
 
 .button {
@@ -305,4 +323,15 @@ body {
 
 .table, .table tr, .table td {
   border: none;
+}
+
+#week-form {
+  font-family: 'Outfit';
+  width: 400px;
+  height: 400px;
+}
+
+#week-form label {
+  margin-left: 10%;
+  font-size: 20px;
 }
