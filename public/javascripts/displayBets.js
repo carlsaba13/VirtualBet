@@ -168,7 +168,7 @@ function betForm(odds1, odds2) {
                 body: JSON.stringify(myInit)
             }).then(res => {
                 if (res.status == 201) {
-                    alert("Bet $" + i.value + " on the " + teamBetOn);
+                    alert("Bet $" + i.value + " on the " + teamBetOn + " with odds " + o);
                     location.reload();
                 } else {
                     alert(res.status);
