@@ -88,20 +88,20 @@ body {
   margin-left: 20px;
 }
 
-.top, .bottom {
-  margin: 20px;
+.top {
   display: grid;
   grid-gap: 5px;
-  width: 100%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #betOffer, #oldBets {
   margin-top: 20px;
-  position: relative;
+  margin-bottom: 20px;
 }
 
 #betOffer, #betOffer th, #betOffer td, #oldBets, #oldBets th, #oldBets td {
-  width: 100%;
   border: 1px solid black;
   border-collapse: collapse;
 }
@@ -115,8 +115,10 @@ body {
 .top {
   grid-template-columns: 1fr 1fr;
 }
-.bottom {
-  grid-template-rows: 1fr 1fr;
+.bottom, #betOffer {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .twofold {
@@ -137,10 +139,13 @@ body {
   position: relative;
 }
 
+.no-move {
+  position: absolute;
+}
+
 .center {
   margin: 0;
   position: absolute;
-  top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -161,6 +166,7 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
 
 .betPlaced, .bet {
   display: inline-block;
@@ -310,6 +316,10 @@ body {
   font-family: 'Outfit';
 }
 
+th {
+  position:static;
+}
+
 #sign-in-form {
   display: table;
   margin-bottom: 15%;
@@ -353,10 +363,6 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-}
-
-.table, .table tr, .table td {
-  border: none;
 }
 
 #week-form {
