@@ -185,7 +185,7 @@ body {
   display: flex;
   margin-top: 30px;
   margin-left: 4%;
-  margin-right: 80%;
+  width:300px;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
@@ -374,4 +374,16 @@ th {
 #week-form label {
   margin-left: 10%;
   font-size: 20px;
+}
+
+#stats-body div {
+  text-align: center;
+  font-family: 'Outfit';
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 10px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  padding: 10px;
 }
