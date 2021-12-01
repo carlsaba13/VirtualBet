@@ -25,7 +25,7 @@ async function init() {
             const myInit = {
                 deposit: parseInt(i.value)
             };
-            fetch('/users'.concat(email), {
+            fetch('/users/'.concat(email), {
                 method: 'POST',
                 headers: {
                 'Accept': 'application/json',
