@@ -46,10 +46,10 @@ router.get('/:user_id', function(req, res) {
                             var a = bets[i]["amount"];
                             if(o < 0){
                                 o *= -1;
-                                user["balance"] += Math.ceil((((o+100)/o)*a)*100)/100;
+                                user["balance"] += Math.round((((o+100)/o)*a)*100)/100;
                             }
                             else{
-                                user["balance"] += Math.ceil((((o+100)/100)*a)*100)/100;
+                                user["balance"] += Math.round((((o+100)/100)*a)*100)/100;
                             }
                             user.save();
                         });
