@@ -16,7 +16,10 @@ function hashCode (str){
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  User.find({}, function (err, users){
+    res.send(users);
+  });
+  //res.send('respond with a resource');
 });
 
 router.get('/:email', function(req, res) {
