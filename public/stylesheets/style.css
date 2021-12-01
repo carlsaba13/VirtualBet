@@ -288,7 +288,7 @@ body {
 
 #sign-in-button:hover, #new-user-button:hover {
   background-color: #97e69b;
-  margin-left: 25%;
+  margin-left: 95%; /* 25%? */
   margin-bottom: 20%;
 }
 
