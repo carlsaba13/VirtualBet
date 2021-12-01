@@ -70,8 +70,8 @@ function getGames(week) {
                 }
             })
             .then(data => {
-                let homeOdds = data["home"];
-                let awayOdds = data["away"];
+                let homeOdds = data["away"];
+                let awayOdds = data["home"];
                 makeNewBet(date, team1, team2, time, awayOdds, homeOdds, gameID);
             }).catch(error => console.log(error));    
             
