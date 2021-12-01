@@ -196,7 +196,7 @@ function makeNewBet(gameDate, team1, team2, gameTime, homeLine, awayLine, gameID
     date.innerHTML = gameDate;
     date.className = "betInfo"
     let teams = infoRow.insertCell("1");
-    teams.innerHTML = team1 + " @ " + team2;
+    teams.innerHTML = team2 + " @ " + team1;
     teams.className = "betInfo"
     let time = infoRow.insertCell("2");
     time.innerHTML = gameTime;
