@@ -35,7 +35,7 @@ async function init() {
             }).then(res => {
                 if (res.status == 201) {
                     alert("Successfully deposited $" + i.value)
-                    location.reload();
+                    window.location.replace("/profile");
                 } else {
                     alert(res.status);
                 }
