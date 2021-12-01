@@ -2,20 +2,26 @@
 <!-- Carl Saba -->
 <html>
   <link type="text/css" href="stylesheets/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit">
   <script type="text/javascript" src="javascripts/authenticate.js" async></script>
 <body class="index-body">
     <!-- Modal content -->
     <div class="card">
-      <h1>Welcome to Bet264.</h1>
-      <div id="sign-in-form">
-        <form onsubmit="event.preventDefault();">
-          <label for="email" class="sign-in-label">Email:   </label>
-          <input type="text" id="email" name="email"><br><br>
-          <label for="pass" class="sign-in-label">Password:</label>
-          <input type="password" id="pass" name="pass"><br><br>
-          <input id="sign-in-button" type="button" name="Sign In" value="Sign In" onclick="validateSignIn();"/>
-          <input id="new-user-button" type="button" name="Create New User" value="Create New User" onclick="validateNewUser();"/>
-        </form>
-      </div>
+      <h1 id="welcome">Welcome to VirtualBet.</h1>
+      <form id="sign-in-form" onsubmit="event.preventDefault();">
+          <p id="sign-in-row">
+            <label for="email" class="sign-in-label">Email:   </label>
+            <input type="text" id="email" name="email"><br><br>
+          </p>
+          <p id="sign-in-row">
+            <label for="pass" class="sign-in-label">Password:</label>
+            <input type="password" id="pass" name="pass"><br><br>
+          </p>
+          <p id="sign-in-row">
+            <input id="sign-in-button" type="button" name="Sign In" value="Sign In" onclick="validateSignIn();"/>
+            <input id="new-user-button" type="button" name="Create New User" value="Create New User" onclick="validateNewUser();"/>
+          </p>
+      </form>
+    </div>
 </body>
 </html>
