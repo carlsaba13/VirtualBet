@@ -2,7 +2,7 @@
 <!-- Carl Saba -->
 <html>
   <link type="text/css" href="stylesheets/style.css" rel="stylesheet">
-  <script type="text/javascript" src="javascripts/displayProfileInfo.js"></script>
+  <script type="text/javascript" src="javascripts/displayProfileInfo.js" async></script>
 <body>
   <div class="topnav">
     <a class="active" href="/"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/1200px-National_Football_League_logo.svg.png"></a>
@@ -38,16 +38,25 @@
       <a href="/deposit"><button id="depositButton">Deposit</button></a>
     </div>
   </div>
-  <br>
   <div class="bottom">
       <h2 id="history">Bet History</h2>
+      <div class="body" id="set-odds-body">
+        <form id="week-form" onsubmit="event.preventDefault(); validateWeek();">
+            <label for="select-week">Select week: </label>
+            <select id="select-week"></select>
+            <input id="submit-week-button" type="button" name="Submit" value="Submit" onclick="validateWeek();"/>
+        </form>
+
+    </div>
       <table id="oldBets" style="width:100%">
         <tr>
             <th class="info">Date</th>
-            <th class="info">Pick</th>
+            <th class="info">Away @ Home</th>
             <th class="info">Time</th>
+            <th class="info">Pick</th>
             <th class="info">Odds</th>
             <th class="info">Amount</th>
+            <th class="info">Victory</th>
         </tr>
     </table>
   </div>

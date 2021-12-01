@@ -41,6 +41,7 @@ function validateWeek(){
     })
     .then(week => {
         getGames(week);
+        document.getElementById("set-odds-body").remove();
     });
     
 }
@@ -71,7 +72,7 @@ function getGames(week) {
             .then(data => {
                 let homeOdds = data["home"];
                 let awayOdds = data["away"];
-                makeNewBet(date, team1, team2, time, homeOdds, awayOdds, gameID);
+                makeNewBet(date, team1, team2, time, awayOdds, homeOdds, gameID);
             }).catch(error => console.log(error));    
             
         }
@@ -82,15 +83,24 @@ function getGames(week) {
 function makeMoneyLine(team1, team2, line1, line2, gameID) {
     console.log(gameID);
     let table = document.createElement("table");
+    table.className = "table";
     let teams = table.insertRow("0");
     teams.outerHTML = "<th>" + team1 + "</th><th>" + team2 + "</th>";
     let moneyLine = table.insertRow("1");
     let moneyLine1 = moneyLine.insertCell("0");
     let moneyLine2 = moneyLine.insertCell("1");
+    if (line1 > 0) {
+        button1 = makeButton("+" + line1, team1, gameID, false);
+    } else {
+        button1 = makeButton(line1, team1, gameID, false);
+    }
+    if (line2 > 0) {
+        button2 = makeButton("+" + line2, team2, gameID, true);
+    } else {
+        button2 = makeButton(line2, team2, gameID, true);
+    }
+
     
-    console.log(line1);
-    button1 = makeButton(line1, team1, gameID, false);
-    button2 = makeButton(line2, team2, gameID, true);
     let td1 = document.createElement("td");
     td1.appendChild(button1);
     let td2 = document.createElement("td");
@@ -104,6 +114,7 @@ function makeButton(odd, team, gameID, home) {
     let buttonObj = document.createElement("button");
     buttonObj.type = "button";
     buttonObj.innerHTML = odd;
+    buttonObj.className = "button";
     buttonObj.addEventListener("click", function() {
         teamBetOn = team;
         gameBetOn = gameID;
@@ -167,6 +178,7 @@ function betForm(odds1, odds2) {
     });
     s.type = "submit";
     s.value = "Place Bet";
+    s.className = "button"
     s.onclick = "return betPlaced()";
     form.appendChild(l);
     form.appendChild(i);
