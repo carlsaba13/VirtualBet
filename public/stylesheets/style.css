@@ -260,7 +260,7 @@ body {
 #depositForm, #depositSubmit {
   width: 100%;
   font-size: 16px;
-  margin: 10px;
+  margin-top: 10px;
   padding: 12px 20px 12px 40px;
 }
 
