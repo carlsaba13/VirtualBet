@@ -18,7 +18,7 @@ router.get('/:user_id', function(req, res) {
                         bets[i]["victory"] = true;
                         bets[i].save();
                         // Edit balance
-                        User.findOne({email: req.params['email']}, async function (err, user){
+                        User.findOne({email: req.params['user_id']}, async function (err, user){
                             if(err){
                                 return;
                             }
@@ -38,7 +38,7 @@ router.get('/:user_id', function(req, res) {
                         bets[i]["victory"] = true;
                         bets[i].save();
                         // Edit balance
-                        User.findOne({email: req.params['email']}, async function (err, user){
+                        User.findOne({email: req.params['user_id']}, async function (err, user){
                             if(err){
                                 return;
                             }
