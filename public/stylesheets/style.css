@@ -84,6 +84,7 @@ body {
 
 #betOffer, #oldBets {
   margin-top: 20px;
+  position: relative;
 }
 
 #betOffer, #betOffer th, #betOffer td, #oldBets, #oldBets th, #oldBets td {
