@@ -33,6 +33,7 @@
       </table>
     </div>
   </div>
+  <br><br>
   <div id="deposit">
     <div class="center">
       <a href="/deposit"><button id="depositButton">Deposit</button></a>
@@ -40,14 +41,16 @@
   </div>
   <div class="bottom">
       <h2 id="history">Bet History</h2>
-      <div class="body" id="set-odds-body">
-        <form id="week-form" onsubmit="event.preventDefault(); validateWeek();">
-            <label for="select-week">Select week: </label>
-            <select id="select-week"></select>
-            <input id="submit-week-button" type="button" name="Submit" value="Submit" onclick="validateWeek();"/>
-        </form>
-
-    </div>
+      <div class="no-move">
+        <div class="body" id="set-odds-body">
+          <form id="week-form" onsubmit="event.preventDefault(); validateWeek();">
+              <label for="select-week">Select week: </label>
+              <select id="select-week"></select>
+              <input id="submit-week-button" type="button" name="Submit" value="Submit" onclick="validateWeek();"/>
+          </form>
+        </div>
+      </div>
+      <br><br><br>
       <table id="oldBets">
         <tr>
             <th class="info">Date</th>
