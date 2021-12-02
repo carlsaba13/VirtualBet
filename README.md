@@ -47,6 +47,7 @@ Link to Application: https://betting264.herokuapp.com/
 * New Users are assigned the Bettor role by default (the Bookie role is already assigned)
 * Upon login, users will be taken to their profile page where they can see statistics on their bet history
 * Bettors can also go to the bets page, where they can place bets on the current week's games
+* Bookie log in:: email: bookie@mail.com  pass: demo
 
 ### Installation Instructions
 * Clone the GitHub Repository
