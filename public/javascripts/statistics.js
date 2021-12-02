@@ -88,9 +88,6 @@ async function addStatistics() {
 
     let avgProfit = netProfit / bets.length;
 avgProfit}
-
-//Loads validate function onto week form
-async function init(){
     const cookie = document.cookie.split('=');
 
     if(cookie[0] === '') {
