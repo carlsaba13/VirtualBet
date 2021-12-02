@@ -41,7 +41,7 @@ Results will be fetched when users check their bet history
 
 
 ### Instructions
-Link to Application: https://virtual-bet.herokuapp.com/
+Link to Application: https://betting264.herokuapp.com/
 * First time users should create a new account by inputting their email and password and clicking the "Create New User" button
 * Repeat users should sign in with their email and password
 * New Users are assigned the Bettor role by default (the Bookie role is already assigned)
