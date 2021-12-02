@@ -64,7 +64,6 @@ body {
   padding: 25px 16px;
   text-decoration: none;
   font-size: 17px;
-  transition: top ease 0.5s;
   position: relative;
   top: 0;
 }
@@ -72,10 +71,6 @@ body {
 .topnav img {
   width: 40px;
   height: 100%;
-}
-
-.topnav a:hover {
-  top: -7px;
 }
 
 .topnav a.active {
