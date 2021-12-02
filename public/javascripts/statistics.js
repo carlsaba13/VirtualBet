@@ -47,8 +47,8 @@ async function addStatistics() {
     let netProfit = 0
 
     bets.forEach(bet => {
-        let amt = bet["amount"];
-        let odds = bet["odds"];
+        let amt = bet.amount;
+        let odds = bet.odds;
         if(bet["victory"]) {
             if(odds < 0){
                 odds *= -1;
@@ -59,7 +59,7 @@ async function addStatistics() {
             }
         }
         else if(bet["victory"] === false){
-            netProfit += amount;
+            netProfit += amt;
         }
     })
 
