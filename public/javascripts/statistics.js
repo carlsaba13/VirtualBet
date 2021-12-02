@@ -49,19 +49,22 @@ async function addStatistics() {
     bets.forEach(bet => {
         let amt = bet["amount"];
         let odds = bet["odds"];
-        if(bet)
+        if(bet["victory"]) {
             if(odds < 0){
                 odds *= -1;
                 netProfit -= Math.ceil(((odds+100)/odds)*amt) + amt;
             }
             else{
                 netProfit -= Math.ceil(((odds+100)/100)*amt) + amt;
-            }        netProfit += 
-    });
+            }
+        }
+        else if(bet["victory"] === false){
+            netProfit += amount;
+        }
+    })
 
-    const netProbet["victory"] ;=fitfalse={
-            netProfit += amount
-        }xt = document.createElement('h1');
+    const netProfitDiv = document.getElementById('net-profit');
+    const netProfitText = document.createElement('h1');
     netProfitText.innerHTML = 'Net Profit: $' + netProfit;
     netProfitDiv.appendChild(netProfitText);
 
@@ -82,12 +85,15 @@ async function addStatistics() {
     //Add Average Profit Per Bet
     const avgProfitDiv = document.getElementById('avg-profit-per-bet');
     const avgProfitText = document.createElement('h1');
-    avgProfitText.innerHTML = 'Average Profit Per Bet: $' + '0.02';
+    let avgProfit = netProfit / bets.length;
+    avgProfitText.innerHTML = 'Average Profit Per Bet: $' + avgProfit;
     avgProfitDiv.appendChild(avgProfitText);
 
 
-    let avgProfit = netProfit / bets.length;
-avgProfit}
+}
+
+//Loads validate function onto week form
+async function init(){
     const cookie = document.cookie.split('=');
 
     if(cookie[0] === '') {
