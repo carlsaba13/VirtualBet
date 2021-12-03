@@ -18,42 +18,87 @@ async function validateSignIn() {
     user = await user.json();
 
     if(user.password === hashCode(password)) {
-    //if(user.password === password) {
         document.cookie = "email=" + user.email;
         if(user.bookie)
             window.location.replace("/statistics");
         else
             window.location.replace("/profile");           
     } else {
-        alert("Incorrect username or password.");
+        const checkExistingError = document.getElementById('sign-in-error');
+
+        try {
+            checkExistingError.remove();
+        } catch(err) {}
+
+        const error = document.createElement('h3');
+        const card = document.getElementById('sign-in-card');
+
+        error.id = 'sign-in-error';
+        error.innerHTML = 'Email or password is incorrect.';
+        error.style.color = 'red';
+
+        card.appendChild(error);
     }
-
-    console.log(user);
-
 }
 
 async function validateNewUser() {
     const email = document.getElementById('email').value;
     const pass = document.getElementById('pass').value;
+    let validNewUser = 1;
+    
+    let checkIfExistingUser = await fetch('/users/' + email);
 
-    const user = JSON.stringify({
-        email: email,
-        bookie: false,
-        password: pass,
-        balance: 100
-    });
+    try {
+        checkIfExistingUser = await checkIfExistingUser.json();
+        validNewUser = -1;
+    } catch(err) {
+        validNewUser = 1;
+    }
 
-    //Sends POST request to server
-    let res = await fetch('/users', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: user
-    });
+    if(email === "" || pass === "")
+    validNewUser = 0;
 
-    //res = await res.json();
+    if(validNewUser === 1) {
+        const user = JSON.stringify({
+            email: email,
+            bookie: false,
+            password: pass,
+            balance: 100
+        });
+    
+        //Sends POST request to server
+        let res = await fetch('/users', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: user
+        });
 
-    console.log(res.body);
+        await validateSignIn();
+
+    } else {
+        const checkExistingError = document.getElementById('sign-in-error');
+
+        try {
+            checkExistingError.remove();
+        } catch(err) {}
+
+        const error = document.createElement('h3');
+        const card = document.getElementById('sign-in-card');
+
+        error.id = 'sign-in-error';
+        
+        if(validNewUser === 0)
+            error.innerHTML = 'Please enter a valid username and password.';
+        else if(validNewUser === -1)
+            error.innerHTML = 'User with email ' + email + ' already created.';
+        
+        error.style.color = 'red';
+
+        card.appendChild(error);
+
+
+    }
 }
